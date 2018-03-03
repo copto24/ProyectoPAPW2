@@ -1,0 +1,26 @@
+.registro{
+	color: #000;
+}
+
+.login{
+	color: #000;
+}
+
+.landing{
+	padding-top: 5%;
+}
+
+body{
+	background: url("");
+	background-size: cover;
+}
+
+.logo{
+	margin-top: 5%;
+	height: 40px;
+	width: 100px;
+}
+
+.carrusel{
+	padding-top: 5%;
+}
