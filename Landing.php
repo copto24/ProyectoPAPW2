@@ -60,8 +60,8 @@
 			        		</div>
 
 			        		<div class="form-group">
-				        		<label>Contrasena:</label>
-				        		<input class="form-control" type="password" placeholder="Contrasena:">
+				        		<label>Contrase&ntildea:</label>
+				        		<input class="form-control" type="password" placeholder="Contraseña:">
 			        		</div>
 
 			        		<button type="button" class="btn btn-success">Entrar</button>
@@ -71,11 +71,16 @@
 
 		        <aside class="col-xs-12 col-sm-6 col-md-5 registro"> 
 			        	<form>
-			        		<label>¿Eres nuevo? Registrate aqui.</label>
+			        		<label>¿Eres nuevo? Registrate aqu&iacute.</label>
 
 			        		<div class="form-group">
 				        		<label>Nombre:</label>
 				        		<input class="form-control" type="text" placeholder="Nombre:">
+			        		</div>
+
+			        		<div class="form-group">
+				        		<label>Fecha de Nacimiento:</label>
+				        		<input class="form-control" type="date">
 			        		</div>
 
 			        		<div class="form-group">
@@ -84,9 +89,15 @@
 			        		</div>
 
 			        		<div class="form-group">
-				        		<label>Contrasena:</label>
-				        		<input class="form-control" type="password" placeholder="Contrasena:">
+				        		<label>Contrase&ntildea:</label>
+				        		<input class="form-control" type="password" placeholder="Contraseña:">
 			        		</div>
+
+			        		<label>G&eacutenero:</label>
+			        		<div class="radio">
+							  <label><input type="radio" name="optradio" checked="checked" >Hombre</label>
+							  <label><input type="radio" name="optradio">Mujer</label>
+							</div>
 
 			        		<button type="button" class="btn btn-primary">Crear cuenta</button>
 
