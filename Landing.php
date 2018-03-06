@@ -10,46 +10,46 @@
 		<link rel="stylesheet" type="text/css" href="css/estilos.css">
 	</head>
 
-	<body>
+	<body class="fondo">
+		<!--Barra de navegacion -->
+				<nav class="navbar barra">
+			      <div class="container">
+			        <div class="navbar-header">
+			          <button type="button" class="navbar-toggle collapsed cuadro" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+			            <span class="sr-only">Toggle navigation</span>
+			            <span class="icon-bar linea"></span>
+			            <span class="icon-bar linea"></span>
+			            <span class="icon-bar linea"></span>
+			          </button>
+			         <img class="logo" src="logo.png">
+			        </div>
+			        <div id="navbar" class="navbar-collapse collapse">
+			        <!--Opciones de barra de navigacion
+			          <ul class="nav navbar-nav">
+			            <li class="active"><a href="#">Inicio</a></li>
+			            <li><a href="#about">Acerca de</a></li>
+			            <li><a href="#contact">Contacto</a></li>
+			            <li class="dropdown">
+			              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Departamentos <span class="caret"></span></a>
+			              <ul class="dropdown-menu">
+			                <li><a href="#">Electronica</a></li>
+			                <li><a href="#">Juegos</a></li>
+			                <li><a href="#">Peliculas</a></li>
+			                <li role="separator" class="divider"></li>
+			                <li class="dropdown-header">Nav header</li>
+			                <li><a href="#">Ropa</a></li>
+			                <li><a href="#">Calzado</a></li>
+			              </ul>
+			              -->
+			            </li>
+			          </ul>
+			        </div>
+			      </div>
+			    </nav>
 
-		<nav class="navbar navbar-inverse">
-	      <div class="container">
-	        <div class="navbar-header">
-	          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-	            <span class="sr-only">Toggle navigation</span>
-	            <span class="icon-bar"></span>
-	            <span class="icon-bar"></span>
-	            <span class="icon-bar"></span>
-	          </button>
-	         <img class="logo" src="logo2.jpg">
-	        </div>
-	        <div id="navbar" class="navbar-collapse collapse">
-	          <ul class="nav navbar-nav">
-	            <li class="active"><a href="#">Inicio</a></li>
-	            <li><a href="#about">Acerca de</a></li>
-	            <li><a href="#contact">Contacto</a></li>
-	            <li class="dropdown">
-	              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Departamentos <span class="caret"></span></a>
-	              <ul class="dropdown-menu">
-	                <li><a href="#">Electronica</a></li>
-	                <li><a href="#">Juegos</a></li>
-	                <li><a href="#">Peliculas</a></li>
-	                <li role="separator" class="divider"></li>
-	                <li class="dropdown-header">Nav header</li>
-	                <li><a href="#">Ropa</a></li>
-	                <li><a href="#">Calzado</a></li>
-	              </ul>
-	            </li>
-	            <li><a href="#contact">Iniciar Sesion</a></li>
-	          </ul>
-	        </div>
-	      </div>
-	    </nav>
-
+		<!--Formularios de login y registro-->
 	    <div class="container">
-
-	    	<div class="landing">
-
+	    	<div>
 		        <article class="col-xs-12 col-sm-6 col-md-7 login">
 		        	<form>
 			        		<label>LOGIN</label>
@@ -65,8 +65,8 @@
 			        		</div>
 
 			        		<button type="button" class="btn btn-success">Entrar</button>
-
 			        	</form>
+			        	<br>
 		        </article>
 
 		        <aside class="col-xs-12 col-sm-6 col-md-5 registro"> 
@@ -93,6 +93,11 @@
 				        		<input class="form-control" type="password" placeholder="Contraseña:">
 			        		</div>
 
+			        		<div class="form-group">
+				        		<label>Selecciona una imagen:</label>
+				        		<input class="form-control" type="file">
+			        		</div>
+			        		
 			        		<label>G&eacutenero:</label>
 			        		<div class="radio">
 							  <label><input type="radio" name="optradio" checked="checked" >Hombre</label>
@@ -104,6 +109,7 @@
 			        	</form>
 		        </aside>
 
+		        <!--Carrusel de imagenes-->
 		        <div class="carrusel col-xs-12">
 					      <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 					        <ol class="carousel-indicators">
@@ -113,13 +119,13 @@
 					        </ol>
 					        <div class="carousel-inner" role="listbox">
 					          <div class="item active">
-					            <img src="logo2.jpg" alt="First slide">
+					            <img src="logo.png" alt="First slide">
 					          </div>
 					          <div class="item">
-					             <img src="logo2.jpg" alt="First slide">
+					             <img src="img2.png" alt="First slide">
 					          </div>
 					          <div class="item">
-					            <img src="logo2.jpg" alt="First slide">
+					            <img src="img3.png" alt="First slide">
 					          </div>
 					        </div>
 					        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">

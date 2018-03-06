@@ -10,17 +10,32 @@
 	padding-top: 5%;
 }
 
-body{
-	background: url("");
-	background-size: cover;
+.fondo{
+	background: url("../fondo.png");
+	background-size: cover;	
 }
 
 .logo{
-	margin-top: 5%;
+	margin-top: 0%;
 	height: 40px;
 	width: 100px;
+	 position: absolute;
+    left: 50%;
+    transform: translatex(-50%);
 }
 
 .carrusel{
 	padding-top: 3%;
+}
+
+.barra{
+	background: #839192;
+}
+
+.cuadro{
+	background: #7F8C8D;
+}
+
+.linea{
+	background: white;
 }
