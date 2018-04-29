@@ -1,0 +1,249 @@
+body, nav{
+	font-family: 'Dosis';
+}
+
+.navbar .nav a{
+	color: #2E4053;
+}
+
+.registro{
+	color: #000;
+}
+
+.login{
+	color: #000;
+}
+
+.landing{
+	padding-top: 5%;
+}
+
+.fondo{
+	background: url("../fondoLanding.png");
+	background-size: cover;	
+}
+
+.logo{
+	margin-top: 0%;
+	height: 40px;
+	width: 100px;
+	position: absolute;
+    left: 50%;
+    transform: translatex(-50%);
+}
+
+.logo2{
+	margin-top: 0%;
+	height: 50px;
+	width: 100px;
+	position: absolute;
+    left: 50%;
+    transform: translatex(-50%);
+}
+
+.logohome{
+	margin-top: 0%;
+	height: 40px;
+	width: 100px;
+}
+
+.carrusel{
+	padding-top: 3%;
+}
+
+.opcionesbarra{
+	padding-left: 5%;
+}
+
+.barra{
+	background: #839192;
+}
+
+.cuadro{
+	background: #7F8C8D;
+}
+
+.linea{
+	background: white;
+}
+
+.sinpadding{
+padding: 0px;
+}
+
+.centrarBusqueda{
+padding-left: 10%
+}
+
+.carruselhome{
+	height: 50%;
+}
+
+.imgcarrusel{
+	margin-left: 25%;
+	height: 50%;
+	width: 50%;
+}
+
+.carruselDep{
+	height: 60%;
+}
+
+.imgcarruselDep{
+	margin-left: 25%;
+	height: 40%;
+	width: 40%;
+}
+
+.carruselproductos{
+	height: 40%;
+}
+
+.imgperfil{
+	margin-top: 0%;
+	height: 40px;
+	width: 40px;
+}
+
+.centrarajustes{
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+.footerhome{
+  background: #839192;
+  position: relative;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: #2E4053;
+  text-align: center;
+}
+
+.footerajustes{
+position:fixed;
+left:0px;
+bottom:0px;
+height:30px;
+background: #839192;
+position: relative;
+width: 100%;
+color: #2E4053;
+text-align: center;
+}
+
+.footerlanding{
+  background: #839192;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: #2E4053;
+  text-align: center;
+}
+
+.tablaAdmin{
+	background-color: #AEB6BF;
+}
+
+.table-striped{
+	background-color: #D6DBDF; 
+}
+
+.carousel-control {
+	left: -12px;
+}
+.carousel-control.right {
+	right: -12px;
+}
+/* Changes the position of the indicators */
+.carousel-indicators {
+	right: 50%;
+	top: auto;
+	bottom: 0px;
+	margin-right: -19px;
+}
+/* Changes the colour of the indicators */
+.carousel-indicators li {
+	background: #c0c0c0;
+}
+.carousel-indicators .active {
+background: #333333;
+}
+
+.miniaturaproducto{
+	margin-top: 10%;
+	padding: 5px;
+	display: inline-block;
+}
+
+.imagenproducto{
+	padding-left: 3%;
+}
+
+.tituloproducto{
+	text-align: right;
+	padding-right: 15%;
+}
+
+.imgPerfilVendedor{
+	height: 200px;
+	width: 200px;
+	margin-left: 30%;
+}
+
+.footerVender{
+  background: #839192;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  height: 40px;
+  width: 100%;
+  color: #2E4053;
+  text-align: center;
+}
+
+.centrarcarrito{
+	padding-left: 25%;
+}
+
+.imgcarrito{
+	height: 200px;
+	width: 200px;
+}
+
+.centrarcomentarios{
+padding-left: 25%
+}
+
+.imgcomentario{
+	padding: 0px;
+	height: 40px;
+	width:40px;
+}
+
+.imgcarrito{
+	height: 80px;
+	width: 80px;
+	padding: 0;
+}
+
+.sinpaddingcarrito{
+padding-top: 5px;
+padding-right: 0;
+padding-left: 0;
+padding-bottom: 5px;
+}
+
+.centrartextodiv{
+	text-align: center;
+    position: relative;
+    padding-top: 15%;
+    -ms-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.quitarcarrito{
+	padding-top: 7%;
+}
