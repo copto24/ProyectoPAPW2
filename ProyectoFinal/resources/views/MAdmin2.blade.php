@@ -9,7 +9,7 @@
 	<body class="fondo">
 
 		@include('PAdmin.AdminNav')
-		@include('PAdmin.AdminC')
+		@include('PAdmin.Admin2C')
 	  
 	    @include('Generales.GeneralScripts')
 

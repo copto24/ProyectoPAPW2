@@ -1,11 +1,10 @@
-
-			<div class="container">
+<div class="container">
 
 				<div class="main row centrarajustes">
 
 				<center>
 					<h1>PANEL DE ADMINISTRADOR</h1>
-					<h2>TABLA DE REPORTES</h2>
+					<h2>TABLA DE BLOQUEOS</h2>
 				</center>
 				
 			
@@ -19,7 +18,7 @@
 							      <th scope="col">Nombre</th>
 							      <th scope="col">Causa</th>
 							      <th scope="col">Publicacion</th>
-							      <th scope="col">Bloquear</th>
+							      <th scope="col">Desbloquear</th>
 							    </tr>
 							 
 							  <tbody>
@@ -31,22 +30,8 @@
 								      <td> <input class="form-control" type="text" readonly="true" name="" value="causa"> </td>
 								      <td> <input class="form-control" type="text" readonly="true" name="" value="publicacion"> </td>
 								      <td>  
-									     <center>
-									      	  <button type="submint" class="btn btn-primary">Bloquear</button>
-									      </center>
-								   	  </td>
-							       </form>
-							    </tr>
-
-							    <tr>
-							      <th scope="row">1</th>
-							      <form class="form=group">
-								      <td> <input class="form-control" type="text" readonly="true" name="" value="nombre1"> </td>
-								      <td> <input class="form-control" type="text" readonly="true" name="" value="causa"> </td>
-								      <td> <input class="form-control" type="text" readonly="true" name="" value="publicacion"> </td>
-								      <td>  
-									       <center>
-									      	  <button type="submint" class="btn btn-primary">Bloquear</button>
+									      <center>
+									      	  <button type="submint" class="btn btn-primary">Desbloquear</button>
 									      </center>
 								   	  </td>
 							       </form>
@@ -60,7 +45,21 @@
 								      <td> <input class="form-control" type="text" readonly="true" name="" value="publicacion"> </td>
 								      <td>  
 									      <center>
-									      	  <button type="submint" class="btn btn-primary">Bloquear</button>
+									      	  <button type="submint" class="btn btn-primary">Desbloquear</button>
+									      </center>
+								   	  </td>
+							       </form>
+							    </tr>
+
+							   <tr>
+							      <th scope="row">1</th>
+							      <form class="form=group">
+								      <td> <input class="form-control" type="text" readonly="true" name="" value="nombre1"> </td>
+								      <td> <input class="form-control" type="text" readonly="true" name="" value="causa"> </td>
+								      <td> <input class="form-control" type="text" readonly="true" name="" value="publicacion"> </td>
+								      <td>  
+									      <center>
+									      	  <button type="submint" class="btn btn-primary">Desbloquear</button>
 									      </center>
 								   	  </td>
 							       </form>
@@ -73,22 +72,22 @@
 								      <td> <input class="form-control" type="text" readonly="true" name="" value="causa"> </td>
 								      <td> <input class="form-control" type="text" readonly="true" name="" value="publicacion"> </td>
 								      <td>  
-									       <center>
-									      	  <button type="submint" class="btn btn-primary">Bloquear</button>
+									      <center>
+									      	  <button type="submint" class="btn btn-primary">Desbloquear</button>
 									      </center>
 								   	  </td>
 							       </form>
 							    </tr>
 
-							    <tr>
+							   <tr>
 							      <th scope="row">1</th>
 							      <form class="form=group">
 								      <td> <input class="form-control" type="text" readonly="true" name="" value="nombre1"> </td>
 								      <td> <input class="form-control" type="text" readonly="true" name="" value="causa"> </td>
 								      <td> <input class="form-control" type="text" readonly="true" name="" value="publicacion"> </td>
 								      <td>  
-									       <center>
-									      	  <button type="submint" class="btn btn-primary">Bloquear</button>
+									      <center>
+									      	  <button type="submint" class="btn btn-primary">Desbloquear</button>
 									      </center>
 								   	  </td>
 							       </form>
@@ -102,7 +101,7 @@
 								      <td> <input class="form-control" type="text" readonly="true" name="" value="publicacion"> </td>
 								      <td>  
 									      <center>
-									      	  <button type="submint" class="btn btn-primary">Bloquear</button>
+									      	  <button type="submint" class="btn btn-primary">Desbloquear</button>
 									      </center>
 								   	  </td>
 							       </form>

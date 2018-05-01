@@ -35,26 +35,47 @@
 							   <center> <h1> NOMBRE DEL PRODUCTO</h1> </center> <br>
 							   <h2>PRECIO: </h2> <br>
 							   <h2>VENDEDOR: </h2> <br>
+							   <h2>FECHA DE LANZAMIENTO: </h2> <br>
 							   <h2>AGREGAR AL CARRITO</h2> <br>
+
+								<form class="sinpadding">
+								    <div class="form-group sinpadding col-lg-2 col-md-2 col-sm-2 col-xs-2">
+								    	<select class="form-control">
+										  <option>1</option>
+										  <option>2</option>
+										  <option>3</option>
+										  <option>4</option>
+										</select>
+								    </div>
+
+							    	<div class="form-group sinpadding col-lg-1 col-md-1 col-sm-1 col-xs-1">
+							    		<button type="submit" class="btn btn-success">Agregar</button>
+							    	</div>
+						    	</form>
+						    	<br>	
 						</div>
-
-
-					    <form>
-						    <div class="form-group sinpadding col-lg-2 col-md-2 col-sm-2 col-xs-2">
-						    	<select class="form-control">
-								  <option>1</option>
-								  <option>2</option>
-								  <option>3</option>
-								  <option>4</option>
-								</select>
-						    </div>
-
-					    	<div class="form-group sinpadding col-lg-1 col-md-1 col-sm-1 col-xs-1">
-					    		<button type="submit" class="btn btn-success">Agregar</button>
-					    	</div>
-				    	</form>
-
 				</article>
+
+				<div class="row">
+						<div class="col-lg-6 col-md-6 col-sm-12">
+							<h2>Reportar Producto</h2> 
+							
+							<form class="sinpadding">
+								    <div class="form-group sinpadding col-lg-4 col-md-4 col-sm-4 col-xs-4">
+								    	<select class="form-control">
+										  <option>Descripcion Incorrecta</option>
+										  <option>La imagen no corresponde con el producto</option>
+										  <option>El vendedor no envio el producto</option>
+										  <option>Producto de otro departamento</option>
+										</select>
+								    </div>
+
+							    	<div class="form-group sinpadding col-lg-1 col-md-1 col-sm-1 col-xs-1">
+							    		<button type="submit" class="btn btn-success">Reportar</button>
+							    	</div>
+						    	</form>
+						</div>
+				</div>
 
 				<br>
 				<center>

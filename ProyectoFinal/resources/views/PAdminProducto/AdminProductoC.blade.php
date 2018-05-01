@@ -16,6 +16,7 @@
 							      <th scope="col">#</th>
 							      <th scope="col">Nombre</th>
 							      <th scope="col">Precio</th>
+							      <th scope="col">Stock</th>
 							      <th scope="col">Descripcion</th>
 							      <th scope="col">Departamento</th>
 							      <th scope="col">Imagen</th>
@@ -30,6 +31,7 @@
 							      <form class="form=group">
 								      <td> <input class="form-control" type="text" required="true" name="" value="nombre1"> </td>
 								      <td> <input class="form-control" type="text" required="true" name="" value="precio"> </td>
+								      <td> <input class="form-control" type="text" required="true" name="" value="stock"> </td>
 								      <td> <input class="form-control" type="text" required="true" name="" value="Descripcion"> </td>
 								   	  <td> <select class="form-control">
 											  <option>Departamento</option>
@@ -57,6 +59,7 @@
 							      <form class="form=group">
 								      <td> <input class="form-control" type="text" required="true" name="" value="nombre1"> </td>
 								      <td> <input class="form-control" type="text" required="true" name="" value="precio"> </td>
+								      <td> <input class="form-control" type="text" required="true" name="" value="stock"> </td>
 								      <td> <input class="form-control" type="text" required="true" name="" value="Descripcion"> </td>
 								   	  <td> <select class="form-control">
 											  <option>Departamento</option>
@@ -84,6 +87,7 @@
 							      <form class="form=group">
 								      <td> <input class="form-control" type="text" required="true" name="" value="nombre1"> </td>
 								      <td> <input class="form-control" type="text" required="true" name="" value="precio"> </td>
+								      <td> <input class="form-control" type="text" required="true" name="" value="stock"> </td>
 								      <td> <input class="form-control" type="text" required="true" name="" value="Descripcion"> </td>
 								   	  <td> <select class="form-control">
 											  <option>Departamento</option>
@@ -106,11 +110,12 @@
 							       </form>
 							    </tr>
 
-							    <tr>
+							   <tr>
 							      <th scope="row">1</th>
 							      <form class="form=group">
 								      <td> <input class="form-control" type="text" required="true" name="" value="nombre1"> </td>
 								      <td> <input class="form-control" type="text" required="true" name="" value="precio"> </td>
+								      <td> <input class="form-control" type="text" required="true" name="" value="stock"> </td>
 								      <td> <input class="form-control" type="text" required="true" name="" value="Descripcion"> </td>
 								   	  <td> <select class="form-control">
 											  <option>Departamento</option>

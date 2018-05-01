@@ -75,13 +75,16 @@ Route::get('/MPerfil', function(){
 	return view('MPerfil');
 });
 
-
 Route::get('/MVender', function(){
 	return view('MVender');
 });
 
 Route::get('/MAdmin', function(){
 	return view('MAdmin');
+});
+
+Route::get('/MAdmin2', function(){
+	return view('MAdmin2');
 });
 
 Route::get('/MCarrito', function(){

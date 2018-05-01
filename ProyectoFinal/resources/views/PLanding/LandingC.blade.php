@@ -63,9 +63,24 @@
 			        		</div>
 
 			        		<div class="form-group">
+				        		<label>Apellido:</label>
+				        		<input class="form-control" type="text" required="true" placeholder="Apellido:">
+			        		</div>
+
+			        		<div class="form-group">
 				        		<label>Fecha de Nacimiento:</label>
 				        		<input class="form-control" required="true" type="date">
 			        		</div>
+
+				        	<div class="form-group">
+				        		<label>Pais:</label>
+				        		<select class="form-control">
+								  <option>Mexico</option>
+								  <option>Canada</option>
+								  <option>Argentina</option>
+								  <option>Rusia</option>
+								</select>
+							</div>
 
 			        		<div class="form-group">
 				        		<label>Correo:</label>
