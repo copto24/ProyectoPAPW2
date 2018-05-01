@@ -4,8 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class user extends Model
+class country extends Model
 {
     //
-    protected $primaryKey = 'id-user';
+    protected $primaryKey = 'id-country';
+
 }
