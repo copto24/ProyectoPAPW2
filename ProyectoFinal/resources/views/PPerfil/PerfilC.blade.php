@@ -31,9 +31,11 @@
 						  <img class= "imgPerfilVendedor img-circle" alt="img-perfil" src="ropa.jpg"> 
 						</div>
 
-						<div class="col-lg-6 col-md-6 col-sm-6">
-							   <h1> NOMBRE DEL VENDEDOR</h1><br>
-							   <h2>Fecha de Afiliacion: </h2> <br>
+						<div class="sinpadding sinmargen col-lg-6 col-md-6 col-sm-6">
+							   <h1 class="sinmargen">NOMBRE DEL VENDEDOR</h1><br>
+							   <h2 class="sinmargen">Fecha de Afiliacion: </h2> <br>
+							   <h2 class="sinmargen">Pais: </h2> <br>
+							   <h2 class="sinmargen">Correo: </h2> <br>
 						</div>
 
 				</article>

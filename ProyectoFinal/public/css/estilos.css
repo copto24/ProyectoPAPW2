@@ -247,3 +247,7 @@ padding-bottom: 5px;
 .quitarcarrito{
 	padding-top: 7%;
 }
+
+.sinmargen{
+	margin: 0;
+}
