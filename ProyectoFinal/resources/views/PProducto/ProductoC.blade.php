@@ -36,6 +36,7 @@
 							   <h2>PRECIO: </h2> <br>
 							   <h2>VENDEDOR: </h2> <br>
 							   <h2>FECHA DE LANZAMIENTO: </h2> <br>
+							   <h2>CALIFICACIÓN: 4 <img class="imgcomentario" src="estrella.png"></h2> <br>
 							   <h2>AGREGAR AL CARRITO</h2> <br>
 
 								<form class="sinpadding">
@@ -73,8 +74,35 @@
 							    	<div class="form-group sinpadding col-lg-1 col-md-1 col-sm-1 col-xs-1">
 							    		<button type="submit" class="btn btn-success">Reportar</button>
 							    	</div>
-						    	</form>
+						    </form>
 						</div>
+						
+						<div class="col-lg-4 col-md-4 col-sm-4">
+							<h2>Calificar</h2>
+							<form class="">
+								<label class="radio-inline">
+							      <input type="radio" name="optradio">1
+							    </label>
+
+							    <label class="radio-inline">
+							      <input type="radio" name="optradio">2
+							    </label>
+
+							    <label class="radio-inline">
+							      <input type="radio" name="optradio">3
+							    </label>
+
+							     <label class="radio-inline">
+							      <input type="radio" name="optradio">4
+							    </label>
+
+							    <label class="radio-inline">
+							      <input type="radio" name="optradio">5
+							    </label>
+
+							</form>
+						</div>
+
 				</div>
 
 				<br>
