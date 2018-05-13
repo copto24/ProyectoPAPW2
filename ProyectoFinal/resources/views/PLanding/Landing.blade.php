@@ -1,35 +1,7 @@
-<!DOCTYPE html>
-<html>
-
-	<head>
-		<title>PROYECTO PAPW2</title>
-		<meta charset="utf-8"> 
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">  
-		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximun-scale=1, minimum-scale=1">  
-		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-		<link rel="stylesheet" type="text/css" href="css/estilos.css">
-		<link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet">
-	</head>
-
-	<body class="fondo">
-		<!--Barra de navegacion -->
-				<nav class="navbar barra">
-			      <div class="container">
-			        <div class="navbar-header">
-			          <button type="button" class="navbar-toggle collapsed cuadro" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-			            <span class="sr-only">Toggle navigation</span>
-			            <span class="icon-bar linea"></span>
-			            <span class="icon-bar linea"></span>
-			            <span class="icon-bar linea"></span>
-			          </button>
-			         <img class="logo" src="logo.png">
-			        </div>
-			        <div id="navbar" class="navbar-collapse collapse">
-		        </div>
-		      </div>
-		    </nav>
-
-		<!--Formularios de login y registro-->
+@extends('PLanding.MasterLanding')
+@section('title', 'Landing')
+@section('content')
+<!--Formularios de login y registro-->
 	    <div class="container-fluid">
 	    	<!--Carrusel de imagenes-->
 		        <div class="carrusel sinpadding col-xs-12">
@@ -93,9 +65,23 @@
 			        		</div>
 
 			        		<div class="form-group">
+				        		<label>Apellido:</label>
+				        		<input class="form-control" type="text" required="true" placeholder="Apellido:">
+			        		</div>
+
+			        		<div class="form-group">
 				        		<label>Fecha de Nacimiento:</label>
 				        		<input class="form-control" required="true" type="date">
 			        		</div>
+
+				        	<div class="form-group">
+				        		<label>Pais:</label>
+				        		<select class="form-control">
+								  @foreach($paises as $pais)
+								  	{<option> {{$pais}} </option>}
+								  @endforeach
+								</select>
+							</div>
 
 			        		<div class="form-group">
 				        		<label>Correo:</label>
@@ -119,22 +105,13 @@
 							</div>
 
 			        		<button type="submit" class="btn btn-primary">Crear cuenta</button>
-
+			        		
 			        	</form>
+			        	<br>
 		        </aside>
 
 		        
 	    	</div>
 	    </div>
 
-	    <footer class="footerhome">
-	    	<h2>PIE DE PAGINA</h2>
-	    </footer>
-	   
-	    <script src="js/jqueryfinal.js"></script>
-	    <script src="js/bootstrap.min.js"></script>
-	    <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-
-	</body>
-
-</html>
+	    @endsection

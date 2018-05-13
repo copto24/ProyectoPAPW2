@@ -8,8 +8,9 @@
 
 	<body class="fondo">
 
-		@include('Generales.NavBar')
-		@include('PCarrito.CarritoC')
+		@include('PLanding.navbar')
+
+		@yield('content')
 	  
 	    @include('Generales.GeneralScripts')
 

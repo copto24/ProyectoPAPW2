@@ -1,3 +1,6 @@
+@extends('PAjustes.MasterAjustes')
+@section('title', 'Ajustes')
+@section('content')
 <div class="container">
 
 				<div class="main row centrarajustes">
@@ -70,3 +73,5 @@
 	</footer>
 
 	</div>
+
+@endsection

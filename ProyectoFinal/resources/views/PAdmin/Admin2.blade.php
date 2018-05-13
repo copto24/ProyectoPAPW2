@@ -1,3 +1,6 @@
+@extends('PAdmin.MasterAdmin')
+@section('title', 'Admin2')
+@section('content')
 <div class="container">
 
 				<div class="main row centrarajustes">
@@ -116,3 +119,5 @@
 	 <footer class="">
 	 	
 	 </footer>
+
+	 @endsection

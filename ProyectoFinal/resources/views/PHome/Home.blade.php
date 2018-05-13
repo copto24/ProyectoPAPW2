@@ -1,3 +1,6 @@
+@extends('PHome.MasterHome')
+@section('title', 'Home')
+@section('content')
   <div class="container-fluid">
 
 			    <div class="form-row">
@@ -196,3 +199,7 @@
 	    <footer class="">
 	    	
 	    </footer>
+
+	    <br>
+
+	    @endsection

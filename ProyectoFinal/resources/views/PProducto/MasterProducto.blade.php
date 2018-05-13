@@ -9,7 +9,8 @@
 	<body class="fondo">
 
 		@include('Generales.NavBar')
-		@include('PPerfil.PerfilC')
+
+		@yield('content')
 	  
 	    @include('Generales.GeneralScripts')
 

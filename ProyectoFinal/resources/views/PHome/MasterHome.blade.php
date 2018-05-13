@@ -9,7 +9,8 @@
 	<body class="fondo">
 
 		@include('Generales.NavBar')
-		@include('PAjustes.AjustesC')
+
+		@yield('content')
 	  
 	    @include('Generales.GeneralScripts')
 

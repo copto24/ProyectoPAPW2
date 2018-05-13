@@ -1,3 +1,6 @@
+@extends('PVender.MasterVender')
+@section('title', 'Vender')
+@section('content')
 <div class="container">
 
 				<div class="main row centrarajustes">
@@ -53,4 +56,4 @@
 
 	</div>
 
-	
+	@endsection

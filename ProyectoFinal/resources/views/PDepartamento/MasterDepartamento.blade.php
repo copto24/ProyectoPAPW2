@@ -9,7 +9,8 @@
 	<body class="fondo">
 
 		@include('Generales.NavBar')
-		@include('PDepartamento.DepartamentoC')
+
+		@yield('content')
 	  
 	    @include('Generales.GeneralScripts')
 

@@ -8,8 +8,9 @@
 
 	<body class="fondo">
 
-		@include('PAdmin.AdminNav')
-		@include('PAdmin.AdminC')
+		@include('Generales.NavBar')
+
+		@yield('content')
 	  
 	    @include('Generales.GeneralScripts')
 

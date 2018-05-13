@@ -10,91 +10,55 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
+use App\country;
 
 Route::get('/Landing', function(){
-	return view('Landing');
+	$paises = country::all();
+	$paises = $paises->pluck('name-country', 'id-country');
+	//dd($paises);
+	return view('PLanding.Landing', compact('paises'));
 });
 
 Route::get('/Home', function(){
-	return view('Home');
+	return view('PHome.Home');
 });
 
 Route::get('/Admin', function(){
-	return view('Admin');
+	return view('PAdmin.Admin1');
+});
+
+Route::get('/Admin2', function(){
+	return view('PAdmin.Admin2');
 });
 
 Route::get('/Departamento', function(){
-	return view('Departamento');
+	return view('PDepartamento.Departamento');
 });
 
 Route::get('/Producto', function(){
-	return view('Producto');
+	return view('PProducto.Producto');
 });
 
 Route::get('/Ajustes', function(){
-	return view('Ajustes');
+	return view('PAjustes.Ajustes');
 });
 
 Route::get('/Perfil', function(){
-	return view('Perfil');
+	return view('PPerfil.Perfil');
 });
 
 Route::get('/Vender', function(){
-	return view('Vender');
+	return view('PVender.Vender');
 });
 
 Route::get('/AdminProducto', function(){
-	return view('AdminProducto');
+	return view('PAdminProducto.AdminProducto');
 });
 
 Route::get('/Carrito', function(){
-	return view('Carrito');
+	return view('PCarrito.Carrito');
 });
 
-Route::get('/MLanding', function(){
-	return view('MLanding');
-});
-
-Route::get('/MHome', function(){
-	return view('MHome');
-});
-
-Route::get('/MDepartamento', function(){
-	return view('MDepartamento');
-});
-
-Route::get('/MProducto', function(){
-	return view('MProducto');
-});
-
-Route::get('/MPerfil', function(){
-	return view('MPerfil');
-});
-
-Route::get('/MVender', function(){
-	return view('MVender');
-});
-
-Route::get('/MAdmin', function(){
-	return view('MAdmin');
-});
-
-Route::get('/MAdmin2', function(){
-	return view('MAdmin2');
-});
-
-Route::get('/MCarrito', function(){
-	return view('MCarrito');
-});
-
-Route::get('/MAdminProducto', function(){
-	return view('MAdminProducto');
-});
-
-Route::get('/MAjustes', function(){
-	return view('MAjustes');
+Route::get('/Historial', function(){
+	return view('PHistorial.Historial');
 });

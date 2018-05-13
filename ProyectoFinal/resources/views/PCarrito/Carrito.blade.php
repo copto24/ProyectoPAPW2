@@ -1,3 +1,6 @@
+@extends('PCarrito.MasterCarrito')
+@section('title', 'Carrito')
+@section('content')
 <div class="container-fluid">
 
 			<center>
@@ -72,3 +75,5 @@
 	<footer>
 	   
 	</footer>
+
+	@endsection

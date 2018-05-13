@@ -1,3 +1,6 @@
+@extends('PProducto.MasterProducto')
+@section('title', 'Producto')
+@section('content')
  <div class="container-fluid">
 
 			    <div class="form-row">
@@ -161,3 +164,5 @@
 	<footer class="">
 	    
 	</footer>
+
+	@endsection

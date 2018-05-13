@@ -9,7 +9,8 @@
 	<body class="fondo">
 
 		@include('Generales.NavBar')
-		@include('PVender.VenderC')
+
+		@yield('content')
 	  
 	    @include('Generales.GeneralScripts')
 

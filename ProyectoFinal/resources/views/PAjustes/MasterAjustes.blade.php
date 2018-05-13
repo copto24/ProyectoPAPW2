@@ -8,8 +8,9 @@
 
 	<body class="fondo">
 
-		@include('PLanding.navbar')
-		@include('PLanding.LandingC')
+		@include('Generales.NavBar')
+
+		@yield('content')
 	  
 	    @include('Generales.GeneralScripts')
 

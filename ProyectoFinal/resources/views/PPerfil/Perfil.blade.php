@@ -1,3 +1,6 @@
+@extends('PPerfil.MasterPerfil')
+@section('title', 'Perfil')
+@section('content')
 <div class="container-fluid">
 
 			    <div class="form-row">
@@ -91,3 +94,5 @@
 					  </ul>
 			</center>
 	</footer>
+
+	@endsection
