@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBuyProductsTable extends Migration
+class CreateBloquedsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,17 @@ class CreateBuyProductsTable extends Migration
      */
     public function up()
     {
-        Schema::create('buy-products', function (Blueprint $table) {
-            $table->increments('id-buy-product')->unsigned();
-            $table->integer('amount-buy-product');
-            $table->float('subtotal-buy-product');
-            $table->boolean('bought-buy-product');
+        Schema::create('bloqueds', function (Blueprint $table) {
+            $table->increments('id-bloqued');
+
+            $table->integer('id-administrator')->unsigned();
+            $table->foreign('id-administrator')->references('id-administrator')->on('administrators');
 
             $table->integer('id-user')->unsigned();
             $table->foreign('id-user')->references('id-user')->on('users');
 
-            $table->integer('id-product')->unsigned();
-            $table->foreign('id-product')->references('id-product')->on('products');
+            $table->integer('id-reason')->unsigned();
+            $table->foreign('id-reason')->references('id-reason')->on('reasons');
             $table->timestamps();
         });
     }
@@ -35,6 +35,6 @@ class CreateBuyProductsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('buy-products');
+        Schema::dropIfExists('bloqueds');
     }
 }

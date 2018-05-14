@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBloquedUsersTable extends Migration
+class CreateCartsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,16 @@ class CreateBloquedUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('bloqued-users', function (Blueprint $table) {
-            $table->increments('id-bloqued-user');
-
-            $table->integer('id-administrator')->unsigned();
-            $table->foreign('id-administrator')->references('id-administrator')->on('administrators');
+        Schema::create('carts', function (Blueprint $table) {
+            $table->increments('id-cart')->unsigned();
+            $table->integer('amount-cart');
 
             $table->integer('id-user')->unsigned();
             $table->foreign('id-user')->references('id-user')->on('users');
 
-            $table->integer('id-reason')->unsigned();
-            $table->foreign('id-reason')->references('id-reason')->on('reasons');
+            $table->integer('id-product')->unsigned();
+            $table->foreign('id-product')->references('id-product')->on('products');
+
             $table->timestamps();
         });
     }
@@ -35,6 +34,6 @@ class CreateBloquedUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bloqued-users');
+        Schema::dropIfExists('carts');
     }
 }

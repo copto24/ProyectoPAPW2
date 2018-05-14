@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\country;
 
 class CountrySeeder extends Seeder
 {
@@ -13,7 +14,40 @@ class CountrySeeder extends Seeder
     {
     	DB::table('countries')->delete();
 
-        DB::table('countries')->insert([
+        country::create([
+            'name-country' => 'México'
+        ]);
+        country::create([
+            'name-country' => 'Estados Unidos'
+        ]);
+        country::create([
+            'name-country' => 'Canadá'
+        ]);
+        country::create([
+            'name-country' => 'Brasil'
+        ]);
+        country::create([
+            'name-country' => 'Argentina'
+        ]);
+        country::create([
+            'name-country' => 'Chile'
+        ]);
+        country::create([
+            'name-country' => 'Panamá'
+        ]);
+        country::create([
+            'name-country' => 'Perú'
+        ]);
+        country::create([
+            'name-country' => 'Nicaragua'
+        ]);
+        country::create([
+            'name-country' => 'Honduras'
+        ]);
+
+
+
+       /* DB::table('countries')->insert([
         	['name-country' => 'México'],
         	['name-country' => 'Estados Unidos'],
         	['name-country' => 'Canadá'],
@@ -24,7 +58,7 @@ class CountrySeeder extends Seeder
         	['name-country' => 'Perú'],
         	['name-country' => 'Nicaragua'],
         	['name-country' => 'Honduras']
-        ]);
+        ]);*/
 
     }
 }

@@ -10,14 +10,12 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-use App\country;
 
-Route::get('/Landing', function(){
-	$paises = country::all();
-	$paises = $paises->pluck('name-country', 'id-country');
-	//dd($paises);
-	return view('PLanding.Landing', compact('paises'));
-});
+Route::resource('/', 'LandingController');
+
+Route::resource('usuario', 'UserController');
+
+Route::resource('principal', 'HomeController');
 
 Route::get('/Home', function(){
 	return view('PHome.Home');
