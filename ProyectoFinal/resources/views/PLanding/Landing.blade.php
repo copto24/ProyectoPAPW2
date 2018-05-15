@@ -37,17 +37,17 @@
 	    	<div>
 		        <article class="col-xs-12 col-sm-6 col-md-7 login">
 
-		        	<form>
+		        	<form action="/usuario/login" method="GET" accept-charset="UTF-8" onsubmit="return validarLogin()">>
 			        		<label>LOGIN</label>
 
 			        		<div class="form-group">
 				        		<label>Correo:</label>
-				        		<input class="form-control" type="email" required="true" placeholder="Correo:">
+				        		<input class="form-control" id="correologin" name="correo" type="email" required placeholder="Correo:">
 			        		</div>
 
 			        		<div class="form-group">
 				        		<label>Contrase&ntildea:</label>
-				        		<input class="form-control" type="password" required="true" placeholder="Contraseña:">
+				        		<input class="form-control" id="contralogin" name="contra" type="password" required="true" placeholder="Contraseña:">
 			        		</div>
 
 			        		<button type="submit" class="btn btn-success">Entrar</button>
@@ -55,16 +55,16 @@
 			        	<br>
 		        </article>
 
-	@if(count($errors) > 0)
-	@foreach($errors->all() as $error)
-	@endforeach
-		<script>
-			alert("ERRORES.\n"+
+				@if(count($errors) > 0)
 				@foreach($errors->all() as $error)
-				"{{$error}}\n"+
-				@endforeach"");
-		</script>
-	@endif
+				@endforeach
+					<script>
+						alert("ERRORES.\n"+
+							@foreach($errors->all() as $error)
+							"{{$error}}\n"+
+							@endforeach"");
+					</script>
+				@endif
 
 
 		        <aside class="col-xs-12 col-sm-6 col-md-5 registro" > 
@@ -93,9 +93,7 @@
 				        		<select class="form-control" name="pais">
 				        			@if($paises)
 								  		@foreach($paises as $pais)
-
 								  			{<option value={{$pais->{'id-country'} }}> {{$pais->{'name-country'} }} </option>}
-								  		
 								  		@endforeach
 								  	@endif
 								</select>
@@ -167,6 +165,24 @@
 					alert('El apellido es un dato invalido');
 					return false;
 				}else if(contratexto == null || contratexto.length == 0 || /^\s+$/.test(contratexto)){
+					alert('La contraseña es un dato invalido');
+					return false;
+				}else {
+					return true;
+				}
+
+			}
+
+			function validarLogin(){
+				var correotext = document.getElementById(correologin.id).value;
+				var contratext = document.getElementById(contralogin.id).value;
+
+				var emailregex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
+
+				if (!emailregex.test(correotext)) {
+				    alert('El correo electronico es invalido');
+    				return false;
+				}else if(contratext == null || contratext.length == 0 || /^\s+$/.test(contratext)){
 					alert('La contraseña es un dato invalido');
 					return false;
 				}else {

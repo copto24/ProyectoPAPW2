@@ -74,7 +74,33 @@ class UserController extends Controller
         $usuario->{'id-country'} = $request->pais;
 
         $usuario->save();
-        return redirect('principal');
+        return redirect('/');
+    }
+
+
+    public function login(Request $request){
+
+        $correo = $request->correo;
+        $contra = $request->contra;
+
+        $usuario = User::select()->where([
+            ['email-user', '=', $correo],
+            ['password-user', '=', $contra]
+        ])->first();
+
+        if($usuario != NULL){
+            $request->session()->put('Usuario', $usuario);
+            return redirect('/principal');
+             //$sesion = $request->session()->all();
+        }else{
+           return redirect('/');
+        }
+        
+    }
+
+     public function logout(Request $request){
+            $request->session()->forget('Usuario');
+            return redirect('/'); 
     }
 
     /**

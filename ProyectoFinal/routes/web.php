@@ -13,6 +13,10 @@
 
 Route::resource('/', 'LandingController');
 
+/*LOGIN Y CERRAR SESION*/
+Route::get('usuario/login', 'UserController@login');
+Route::any('usuario/logout', 'UserController@logout');
+
 Route::resource('usuario', 'UserController');
 
 Route::resource('principal', 'HomeController');

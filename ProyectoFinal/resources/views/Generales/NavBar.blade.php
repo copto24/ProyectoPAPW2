@@ -32,7 +32,7 @@
 
 			           <ul class="nav navbar-nav navbar-right">
 							<li> <img class="imgperfil img-circle" src="usuario.png"> </li>
-				            <li> <a href="#contact">Cerrar Sesion</a></li>
+				            <li> <a href="/usuario/logout">Cerrar Sesion</a></li>
 			            	<li> <a href="#contact">Carrito</a></li>
 			            	<li> <a href="#contact">Ajustes</a></li>
 			           </ul>
