@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
-
+use Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -91,7 +91,11 @@ class UserController extends Controller
         if($usuario != NULL){
             $request->session()->put('Usuario', $usuario);
             return redirect('/principal');
-             //$sesion = $request->session()->all();
+            //$sesion = $request->session()->all();
+            //if($request->session()->has('Usuario')) {
+              //  echo session::get('Usuario')->{'image-user'};
+             //}
+            //dd($imagen);
         }else{
            return redirect('/');
         }

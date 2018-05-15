@@ -30,11 +30,19 @@
 				            
 			          </ul>
 
+			        
+			           @php
+			           $ruta = "fotografias/";
+		               $variable= Session::get('Usuario')->{'image-user'};
+		               $imagen = $ruta.$variable;
+		               @endphp
+
 			           <ul class="nav navbar-nav navbar-right">
-							<li> <img class="imgperfil img-circle" src="usuario.png"> </li>
+							<li> <img class="imgperfil img-circle" src={{$imagen}}> </li>
+							<li> <a href="/nuevo">Vender</a></li>
 				            <li> <a href="/usuario/logout">Cerrar Sesion</a></li>
 			            	<li> <a href="#contact">Carrito</a></li>
-			            	<li> <a href="#contact">Ajustes</a></li>
+			            	<li> <a href="/ajustes">Ajustes</a></li>
 			           </ul>
 
 			        </div>

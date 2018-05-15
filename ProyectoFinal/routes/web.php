@@ -17,9 +17,17 @@ Route::resource('/', 'LandingController');
 Route::get('usuario/login', 'UserController@login');
 Route::any('usuario/logout', 'UserController@logout');
 
+Route::resource('ajustes', 'AjustesController');
+
+Route::resource('nuevo', 'NuevoProductoController');
+
 Route::resource('usuario', 'UserController');
 
 Route::resource('principal', 'HomeController');
+
+Route::get('/Nuevo', function(){
+	return view('PNuevoProducto.NuevoProducto');
+});
 
 Route::get('/Home', function(){
 	return view('PHome.Home');
