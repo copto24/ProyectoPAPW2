@@ -22,7 +22,7 @@
 				
 				<article class="col-xs-12 col-sm-12 col-md-12 login sinpadding">
 
-		        	<form action="/ajustes" method="POST" accept-charset="UTF-8" files=”true”  enctype="multipart/form-data" onsubmit="return validacion()">
+		        	<form action="/usuario/update" method="POST" accept-charset="UTF-8" files=”true”  enctype="multipart/form-data" onsubmit="return validacion()">
 			        		{{ csrf_field() }}
 
 				        		<label>Datos</label>
@@ -90,7 +90,7 @@
 							  <label><input type="radio" name="optradio" value="1">Mujer</label>
 							</div>
 
-			        		<button type="submit" class="btn btn-primary">Crear cuenta</button>
+			        		<button type="submit" class="btn btn-primary">Modificar</button>
 
 			        	</form>
 		        	<br>

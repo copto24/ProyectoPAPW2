@@ -136,9 +136,30 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+
+        $id = Session::get('Usuario')->{'id-user'};
+
+        $file = $request->file('foto');
+        $nombreimagen = $file->getClientOriginalName();
+        Storage::disk('local')->put($nombreimagen,  \File::get($file));
+
+        $usuario = User::find($id);
+        $usuario->{'first-name-user'} = $request->nombre;
+        $usuario->{'last-name-user'} = $request->apellido;
+        $usuario->{'email-user'} = $request->correo;
+        $usuario->{'password-user'} = $request->contra;
+        $usuario->{'image-user'} = $nombreimagen;
+        $usuario->{'birthdate-user'} = $request->fecha;
+        $usuario->{'gender-user'} = $request->optradio;
+        $usuario->{'low-user'} = 0;
+        $usuario->{'id-country'} = $request->pais;
+
+        $usuario->save();
+        $request->session()->forget('Usuario');
+        $request->session()->put('Usuario', $usuario);
+        return redirect('/principal');
     }
 
     /**

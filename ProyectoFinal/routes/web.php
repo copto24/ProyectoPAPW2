@@ -16,6 +16,9 @@ Route::resource('/', 'LandingController');
 /*LOGIN Y CERRAR SESION*/
 Route::get('usuario/login', 'UserController@login');
 Route::any('usuario/logout', 'UserController@logout');
+Route::post('usuario/update', 'UserController@update');
+
+Route::resource('adminproducto', 'AdminProductoController');
 
 Route::resource('ajustes', 'AjustesController');
 

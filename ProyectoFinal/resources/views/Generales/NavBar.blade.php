@@ -14,7 +14,7 @@
 			        <div id="navbar" class="navbar-collapse collapse">
 			          <ul class="nav navbar-nav">
 			          		<li> <img class="logohome" src="logo.png"> </li>
-				            <li class="active"><a href="#">Inicio</a></li>
+				            <li class="active"><a href="/principal">Inicio</a></li>
 				            <li><a href="#about">Acerca de</a></li>
 				            <li><a href="#contact">Contacto</a></li>
 				            <li class="dropdown">
@@ -27,10 +27,8 @@
 				                <li><a href="#">Calzado</a></li>
 				              </ul>
 				            </li>
-				            
 			          </ul>
 
-			        
 			           @php
 			           $ruta = "fotografias/";
 		               $variable= Session::get('Usuario')->{'image-user'};
@@ -39,7 +37,13 @@
 
 			           <ul class="nav navbar-nav navbar-right">
 							<li> <img class="imgperfil img-circle" src={{$imagen}}> </li>
-							<li> <a href="/nuevo">Vender</a></li>
+							<li class="dropdown">
+				              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Opciones <span class="caret"></span></a>
+				              <ul class="dropdown-menu">
+				               <li> <a href="/nuevo">Vender</a></li>
+				               <li> <a href="/adminproducto">Administrar</a></li>
+				              </ul>
+				            </li>
 				            <li> <a href="/usuario/logout">Cerrar Sesion</a></li>
 			            	<li> <a href="#contact">Carrito</a></li>
 			            	<li> <a href="/ajustes">Ajustes</a></li>

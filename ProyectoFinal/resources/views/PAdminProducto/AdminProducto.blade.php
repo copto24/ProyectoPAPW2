@@ -29,19 +29,28 @@
 							 
 							  <tbody>
 
+							  	@foreach($productos as $producto)
+							  	@if($productos)
+
+							  	@endif
+							  	@endforeach
 							    <tr>
-							      <th scope="row">1</th>
+							      <th scope="row">{{ $producto->{'id-product'} }}</th>
 							      <form class="form=group">
-								      <td> <input class="form-control" type="text" required="true" name="" value="nombre1"> </td>
-								      <td> <input class="form-control" type="text" required="true" name="" value="precio"> </td>
-								      <td> <input class="form-control" type="text" required="true" name="" value="stock"> </td>
-								      <td> <input class="form-control" type="text" required="true" name="" value="Descripcion"> </td>
-								   	  <td> <select class="form-control">
-											  <option>Departamento</option>
-											  <option>Departamento</option>
-											  <option>Departamento</option>
-											  <option>Departamento</option>
-											</select>
+								      <td> <input class="form-control" type="text" required="true" name="" value="{{ $producto->{'name-product'} }}"> </td>
+								      <td> <input class="form-control" type="text" required="true" name="" value="{{ $producto->{'price-product'} }}"> </td>
+								      <td> <input class="form-control" type="text" required="true" name="" value="{{ $producto->{'amount-product'} }}"> </td>
+								      <td> 
+								      	<textarea class="form-control" rows="2" required="true"> {{ $producto->{'description-product'} }} </textarea> 
+								      </td>
+								   	  <td> 
+								   	  	<select class="form-control">
+											@if($departamentos)
+										  		@foreach($departamentos as $departamento)
+										  			{<option value={{$departamento->{'id-department'} }}> {{$departamento->{'name-department'} }} </option>}
+										  		@endforeach
+									  		@endif
+										</select>
 									 </td>
 									
 									 <td>
@@ -56,91 +65,6 @@
 								   	  </td>
 							       </form>
 							    </tr>
-
-							    <tr>
-							      <th scope="row">1</th>
-							      <form class="form=group">
-								      <td> <input class="form-control" type="text" required="true" name="" value="nombre1"> </td>
-								      <td> <input class="form-control" type="text" required="true" name="" value="precio"> </td>
-								      <td> <input class="form-control" type="text" required="true" name="" value="stock"> </td>
-								      <td> <input class="form-control" type="text" required="true" name="" value="Descripcion"> </td>
-								   	  <td> <select class="form-control">
-											  <option>Departamento</option>
-											  <option>Departamento</option>
-											  <option>Departamento</option>
-											  <option>Departamento</option>
-											</select>
-									 </td>
-									
-									 <td>
-									 	<input class="form-control" required="true" type="file">
-									 </td>
-
-									 <td>  
-									     <button type="submit" class="btn btn-primary">Modificar</button>
-								   	  </td>
-									  <td>  
-									     <button type="button" class="btn btn-primary">Borrar</button>
-								   	  </td>
-							       </form>
-							    </tr>
-
-							    <tr>
-							      <th scope="row">1</th>
-							      <form class="form=group">
-								      <td> <input class="form-control" type="text" required="true" name="" value="nombre1"> </td>
-								      <td> <input class="form-control" type="text" required="true" name="" value="precio"> </td>
-								      <td> <input class="form-control" type="text" required="true" name="" value="stock"> </td>
-								      <td> <input class="form-control" type="text" required="true" name="" value="Descripcion"> </td>
-								   	  <td> <select class="form-control">
-											  <option>Departamento</option>
-											  <option>Departamento</option>
-											  <option>Departamento</option>
-											  <option>Departamento</option>
-											</select>
-									 </td>
-									
-									 <td>
-									 	<input class="form-control" required="true" type="file">
-									 </td>
-
-									 <td>  
-									     <button type="submit" class="btn btn-primary">Modificar</button>
-								   	  </td>
-									  <td>  
-									     <button type="button" class="btn btn-primary">Borrar</button>
-								   	  </td>
-							       </form>
-							    </tr>
-
-							   <tr>
-							      <th scope="row">1</th>
-							      <form class="form=group">
-								      <td> <input class="form-control" type="text" required="true" name="" value="nombre1"> </td>
-								      <td> <input class="form-control" type="text" required="true" name="" value="precio"> </td>
-								      <td> <input class="form-control" type="text" required="true" name="" value="stock"> </td>
-								      <td> <input class="form-control" type="text" required="true" name="" value="Descripcion"> </td>
-								   	  <td> <select class="form-control">
-											  <option>Departamento</option>
-											  <option>Departamento</option>
-											  <option>Departamento</option>
-											  <option>Departamento</option>
-											</select>
-									 </td>
-									
-									 <td>
-									 	<input class="form-control" required="true" type="file">
-									 </td>
-
-									 <td>  
-									     <button type="submit" class="btn btn-primary">Modificar</button>
-								   	  </td>
-									  <td>  
-									     <button type="button" class="btn btn-primary">Borrar</button>
-								   	  </td>
-							       </form>
-							    </tr>
-
 
 							  </tbody>
 							</table>
