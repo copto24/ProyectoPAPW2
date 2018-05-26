@@ -3,17 +3,19 @@
 
 	<head>
 		<title>@yield('title')</title>
-		@include('Generales.HeadC')
+		@include('PPerfil.PerfilHeadC')
 	</head>
 
 	<body class="fondo">
 
-		@include('Generales.NavBar')
+		@include('PPerfil.PerfilNavBar')
 
 		@yield('content')
 	  
-	    @include('Generales.GeneralScripts')
+	    @include('PPerfil.PerfilScripts')
 
 	</body>
+
+	@yield('scripts')
 
 </html>

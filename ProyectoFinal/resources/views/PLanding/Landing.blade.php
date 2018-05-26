@@ -1,5 +1,10 @@
 @extends('PLanding.MasterLanding')
 @section('title', 'Landing')
+
+@php
+	$message=Session::get('message');
+@endphp
+
 @section('content')
 <!--Formularios de login y registro-->
 	    <div class="container-fluid">
@@ -37,7 +42,8 @@
 	    	<div>
 		        <article class="col-xs-12 col-sm-6 col-md-7 login">
 
-		        	<form action="/usuario/login" method="GET" accept-charset="UTF-8" onsubmit="return validarLogin()">>
+		        	<form action="/usuario/login" method="POST" accept-charset="UTF-8" onsubmit="return validarLogin()">
+		        	{{ csrf_field() }}
 			        		<label>LOGIN</label>
 
 			        		<div class="form-group">
@@ -54,18 +60,6 @@
 			        	</form>
 			        	<br>
 		        </article>
-
-				@if(count($errors) > 0)
-				@foreach($errors->all() as $error)
-				@endforeach
-					<script>
-						alert("ERRORES.\n"+
-							@foreach($errors->all() as $error)
-							"{{$error}}\n"+
-							@endforeach"");
-					</script>
-				@endif
-
 
 		        <aside class="col-xs-12 col-sm-6 col-md-5 registro" > 
 			        	<form action="/usuario" method="POST" accept-charset="UTF-8" files=”true”  enctype="multipart/form-data" onsubmit="return validacion()">
@@ -131,20 +125,44 @@
 	    </div>
 
 
-
 	    @endsection
 
 	    @section('scripts')
+	    @if(count($errors) > 0)
+			<script>
+				alert("ERRORES.\n"+
+				@foreach($errors->all() as $error)
+				"{{$error}}\n"+
+				@endforeach"");
+			</script>
+		@endif
+
+	   	@if($message == '1') 
+	    	<script> alert("Usuario Agregado Correctamente."); </script> 
+	    @elseif($message == '2') 
+	    	<script> alert("Datos incorrectos."); </script>
+	    @endif
+
 	    <script type="text/javascript">
 	    	function fileValidation(){
 			    var fileInput = document.getElementById('foto');
 			    var filePath = fileInput.value;
+			    var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
 			    if(!allowedExtensions.exec(filePath)){
 			        alert('Solo pueden subirse imagenes jpg y png.');
 				      	fileInput.value = '';
 				        return false;			        
 				}
-			    
+			}
+
+			function tiene_numeros(texto){
+				var numeros="0123456789";
+			   	for(i=0; i<texto.length; i++){
+			      	if (numeros.indexOf(texto.charAt(i),0)!=-1){
+			         	return true;
+			      	}
+			  	}
+			   return false;
 			}
 
 			function validacion(){
@@ -158,10 +176,10 @@
 				if (!emailregex.test(emailtexto)) {
 				    alert('El correo electronico es invalido');
     				return false;
-				}else if(nombretexto == null || nombretexto.length == 0 || /^\s+$/.test(nombretexto)){
+				}else if(nombretexto == null || nombretexto.length == 0 || /^\s+$/.test(nombretexto) || tiene_numeros(nombretexto)){
 					alert('El nombre es un dato invalido');
 					return false;
-				}else if(apellidotexto == null || apellidotexto.length == 0 || /^\s+$/.test(apellidotexto)){
+				}else if(apellidotexto == null || apellidotexto.length == 0 || /^\s+$/.test(apellidotexto) || tiene_numeros(apellidotexto)){
 					alert('El apellido es un dato invalido');
 					return false;
 				}else if(contratexto == null || contratexto.length == 0 || /^\s+$/.test(contratexto)){

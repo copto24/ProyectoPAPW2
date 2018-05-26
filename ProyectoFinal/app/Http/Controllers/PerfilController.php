@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\User;
 use App\department;
+use App\product;
 use Session;
+use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class PerfilController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,12 +17,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if(Session::has('Usuario')){
-            $departamentos = department::all(); 
-            return view('PHome.Home')->with('departamentos', $departamentos);
-        }else{
-            return redirect('/');
-        }
+        //
     }
 
     /**
@@ -42,6 +39,19 @@ class HomeController extends Controller
     public function store(Request $request)
     {
         //
+    }
+
+    public function verperfil($id)
+    {
+        if(Session::has('Usuario')){
+           $usuario = User::join('countries', 'users.id-country','countries.id-country')->where('users.id-user', $id)->get();
+           //dd($usuario);
+           $productos = product::where('id-user', $id)->paginate(4);
+           $departamentos = department::all(); 
+            return view('PPerfil.Perfil')->with('usuario', $usuario)->with('productos', $productos)->with('departamentos', $departamentos);
+        }else{
+            return redirect('/');
+        }
     }
 
     /**

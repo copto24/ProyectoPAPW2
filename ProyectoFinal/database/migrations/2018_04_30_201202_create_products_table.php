@@ -20,7 +20,8 @@ class CreateProductsTable extends Migration
             $table->integer('amount-product');
             $table->text('description-product');
             $table->string('image-product',300);
-            $table->boolean('low-product');
+
+            $table->softDeletes();
 
             $table->integer('id-user')->unsigned();
             $table->foreign('id-user')->references('id-user')->on('users');

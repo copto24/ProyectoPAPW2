@@ -15,6 +15,7 @@ class CreateReportsTable extends Migration
     {
         Schema::create('reports', function (Blueprint $table) {
             $table->increments('id-report');
+            $table->softDeletes();
 
             $table->integer('id-user')->unsigned();
             $table->foreign('id-user')->references('id-user')->on('users');

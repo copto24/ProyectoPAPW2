@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('image-user',300);
             $table->date('birthdate-user');
             $table->boolean('gender-user');
-            $table->boolean('low-user');
+            $table->softDeletes();
 
             $table->integer('id-country')->unsigned();
             $table->foreign('id-country')->references('id-country')->on('countries');

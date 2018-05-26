@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Session;
 use Illuminate\Http\Request;
 use App\country;
 
@@ -14,8 +15,12 @@ class LandingController extends Controller
      */
     public function index()
     {
-        $paises = country::all(); 
-        return view('PLanding.Landing')->with('paises', $paises);
+        if(Session::has('Usuario')){
+            return redirect('/principal');
+        }else{
+            $paises = country::all(); 
+            return view('PLanding.Landing')->with('paises', $paises);
+        }
     }
 
     /**

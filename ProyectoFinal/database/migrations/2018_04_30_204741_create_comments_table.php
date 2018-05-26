@@ -18,6 +18,8 @@ class CreateCommentsTable extends Migration
             $table->string('description-comment',200);
             $table->datetime('date-comment');
 
+            $table->softDeletes();
+
             $table->integer('id-user')->unsigned();
             $table->foreign('id-user')->references('id-user')->on('users');
 

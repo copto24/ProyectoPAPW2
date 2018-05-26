@@ -15,6 +15,7 @@ class CreateBloquedsTable extends Migration
     {
         Schema::create('bloqueds', function (Blueprint $table) {
             $table->increments('id-bloqued');
+            $table->softDeletes();
 
             $table->integer('id-administrator')->unsigned();
             $table->foreign('id-administrator')->references('id-administrator')->on('administrators');

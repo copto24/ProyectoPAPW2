@@ -1,5 +1,15 @@
 @extends('PAjustes.MasterAjustes')
 @section('title', 'Ajustes')
+
+@php
+	$message=Session::get('message');
+	$nombre = Session::get('Usuario')->{'first-name-user'};
+	$apellido = Session::get('Usuario')->{'last-name-user'};
+	$fecha = Session::get('Usuario')->{'birthdate-user'};
+	$correo = Session::get('Usuario')->{'email-user'};
+	$genero = Session::get('Usuario')->{'gender-user'};
+@endphp
+
 @section('content')
 <div class="container">
 
@@ -8,20 +18,8 @@
 				<center>
 					<h2>AJUSTES DE USUARIO</h2>
 				</center>
-
-				@if(count($errors) > 0)
-				@foreach($errors->all() as $error)
-				@endforeach
-					<script>
-						alert("ERRORES.\n"+
-							@foreach($errors->all() as $error)
-							"{{$error}}\n"+
-							@endforeach"");
-					</script>
-				@endif
 				
 				<article class="col-xs-12 col-sm-12 col-md-12 login sinpadding">
-
 		        	<form action="/usuario/update" method="POST" accept-charset="UTF-8" files=”true”  enctype="multipart/form-data" onsubmit="return validacion()">
 			        		{{ csrf_field() }}
 
@@ -29,27 +27,18 @@
 
 				        		<div class="form-group">
 				        		<label>Nombre:</label>
-				        		@php
-				        			$nombre = Session::get('Usuario')->{'first-name-user'};
-				        		@endphp
-				        		<input class="form-control" id="nombre" name="nombre" type="text" required  placeholder="Nombre:" value="{{$nombre}}">
+				        		<input class="form-control" id="nombre" name="nombre" type="text" placeholder="Nombre:" value="{{$nombre}}">
 				        		
-			        		</div>
+			        			</div>
 
 			        		<div class="form-group">
 				        		<label>Apellido:</label>
-				        		@php
-				        			$apellido = Session::get('Usuario')->{'last-name-user'};
-				        		@endphp
-				        		<input class="form-control" id="apellido" name="apellido" type="text" required placeholder="Apellido:" value="{{$apellido}}">
+				        		<input class="form-control" id="apellido" name="apellido" type="text" placeholder="Apellido:" value="{{$apellido}}">
 			        		</div>
 
 			        		<div class="form-group">
 				        		<label>Fecha de Nacimiento:</label>
-				        		@php
-				        			$fecha = Session::get('Usuario')->{'birthdate-user'};
-				        		@endphp
-				        		<input class="form-control" name="fecha" type="date" required max={{date("Y-m-d")}} min="1940-01-01" value={{date("Y-m-d")}} value="{{$fecha}}">
+				        		<input class="form-control" name="fecha" type="date" max={{date("Y-m-d")}} min="1940-01-01"  value="{{$fecha}}">
 			        		</div>
 
 				        	<div class="form-group">
@@ -57,7 +46,15 @@
 				        		<select class="form-control" name="pais">
 				        			@if($paises)
 								  		@foreach($paises as $pais)
-								  			{<option value={{$pais->{'id-country'} }}> {{$pais->{'name-country'} }} </option>}
+								  			{<option value={{$pais->{'id-country'} }}
+								  			@php
+								  				if(Session::get('Usuario')->{'id-country'} == $pais->{'id-country'}){
+											@endphp
+												selected 
+								  			@php		
+								  				}
+								  			@endphp
+								  			>{{$pais->{'name-country'} }} </option>}
 								  		@endforeach
 								  	@endif
 								</select>
@@ -65,29 +62,34 @@
 
 			        		<div class="form-group">
 				        		<label >Correo:</label>
-				        		@php
-				        			$correo = Session::get('Usuario')->{'email-user'};
-				        		@endphp
 				        		<input class="form-control" id="correo" name="correo" type="email" required placeholder="Correo:" value="{{$correo}}">
 			        		</div>
 
 			        		<div class="form-group">
 				        		<label>Contrase&ntildea:</label>
-				        		@php
-				        			$contra = Session::get('Usuario')->{'password-user'};
-				        		@endphp
-				        		<input class="form-control" id="contra" name="contra" type="password" required placeholder="Contraseña:" value="{{$contra}}">
+				        		<input class="form-control" id="contra" name="contra" type="password" placeholder="Contraseña:" value="">
 			        		</div>
 
 			        		<div class="form-group">
 				        		<label>Selecciona una imagen:</label>
-				        		<input class="form-control" required type="file" id="foto" name="foto" onchange="return fileValidation()">
+				        		<input class="form-control" type="file" id="foto" name="foto" onchange="return fileValidation()">
 			        		</div>
 			        		
 			        		<label>G&eacutenero:</label>
 			        		<div class="radio">
-							  <label><input type="radio" name="optradio" checked="checked" value="0">Hombre</label>
-							  <label><input type="radio" name="optradio" value="1">Mujer</label>
+								@php
+				        			if($genero == 0){
+				        		@endphp
+					        		<label><input type="radio" name="optradio" checked="checked" value="0">Hombre</label>
+								  	<label><input type="radio" name="optradio" value="1">Mujer</label>
+				        		@php
+				        			}elseif($genero == 1){
+				        		@endphp
+				        			<label><input type="radio" name="optradio" value="0">Hombre</label>
+								  	<label><input type="radio" name="optradio" checked="checked" value="1">Mujer</label>
+				        		@php
+				        			}
+				        		@endphp
 							</div>
 
 			        		<button type="submit" class="btn btn-primary">Modificar</button>
@@ -97,26 +99,46 @@
 		        </article>     
 		</div>
 
-
-	<footer class="">
-	    	
-	</footer>
-
 	</div>
 
 @endsection
 
-@section('scripts')
+	@section('scripts')
+	    @if(count($errors) > 0)
+			<script>
+				alert("ERRORES.\n"+
+				@foreach($errors->all() as $error)
+				"{{$error}}\n"+
+				@endforeach"");
+			</script>
+		@endif
+
+		@if($message == '1') 
+	    	<script> alert("La contraseña debe tener 3 caracteres minimo."); </script> 
+	    @elseif($message == '2') 
+	    	<script> alert("El correo ya exite, escoga otro."); </script>
+	    @endif
+
 	    <script type="text/javascript">
 	    	function fileValidation(){
 			    var fileInput = document.getElementById('foto');
 			    var filePath = fileInput.value;
+			    var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
 			    if(!allowedExtensions.exec(filePath)){
 			        alert('Solo pueden subirse imagenes jpg y png.');
 				      	fileInput.value = '';
 				        return false;			        
 				}
-			    
+			}
+
+			function tiene_numeros(texto){
+				var numeros="0123456789";
+			   	for(i=0; i<texto.length; i++){
+			      	if (numeros.indexOf(texto.charAt(i),0)!=-1){
+			         	return true;
+			      	}
+			  	}
+			   return false;
 			}
 
 			function validacion(){
@@ -127,16 +149,17 @@
 
 				var emailregex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
 
+
 				if (!emailregex.test(emailtexto)) {
 				    alert('El correo electronico es invalido');
     				return false;
-				}else if(nombretexto == null || nombretexto.length == 0 || /^\s+$/.test(nombretexto)){
+				}else if(nombretexto == null || /^\s+$/.test(nombretexto) || tiene_numeros(nombretexto)){
 					alert('El nombre es un dato invalido');
 					return false;
-				}else if(apellidotexto == null || apellidotexto.length == 0 || /^\s+$/.test(apellidotexto)){
+				}else if(apellidotexto == null || /^\s+$/.test(apellidotexto) || tiene_numeros(apellidotexto)){
 					alert('El apellido es un dato invalido');
 					return false;
-				}else if(contratexto == null || contratexto.length == 0 || /^\s+$/.test(contratexto)){
+				}else if(contratexto == null || /^\s+$/.test(contratexto)){
 					alert('La contraseña es un dato invalido');
 					return false;
 				}else {
@@ -148,4 +171,4 @@
 			
 	    </script>
 		
-	    @endsection
+	@endsection

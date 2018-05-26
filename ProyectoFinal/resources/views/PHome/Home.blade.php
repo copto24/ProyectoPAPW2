@@ -1,5 +1,10 @@
 @extends('PHome.MasterHome')
 @section('title', 'Home')
+
+@php
+	$message=Session::get('message');
+@endphp
+
 @section('content')
   <div class="container-fluid">
 
@@ -7,10 +12,11 @@
 				    <form class="centrarBusqueda">
 					    <div class="form-group sinpadding col-xs-2">
 					    	<select class="form-control">
-							  <option>Filtro 1</option>
-							  <option>Filtro 2</option>
-							  <option>Filtro 3</option>
-							  <option>Filtro 4</option>
+							  @if($departamentos)
+								  		@foreach($departamentos as $departamento)
+								  			{<option value={{$departamento->{'id-department'} }}> {{$departamento->{'name-department'} }} </option>}
+								  		@endforeach
+								  	@endif
 							</select>
 					    </div>
 
@@ -202,4 +208,14 @@
 
 	    <br>
 
-	    @endsection
+@endsection
+
+@section('scripts')
+
+		@if($message == '1') 
+	    	<script> alert("Datos modificados correctamente."); </script> 
+	    @endif
+
+	    
+		
+	@endsection

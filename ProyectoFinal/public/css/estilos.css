@@ -172,6 +172,8 @@ background: #333333;
 }
 
 .miniaturaproducto{
+	width: 100%;
+	height: 300px;
 	margin-top: 10%;
 	padding: 5px;
 	display: inline-block;
@@ -250,4 +252,8 @@ padding-bottom: 5px;
 
 .sinmargen{
 	margin: 0;
+}
+
+.adprod{
+	resize:none;
 }

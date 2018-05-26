@@ -21,7 +21,9 @@ class CreateAdministratorsTable extends Migration
             $table->string('password-administrator');
             $table->string('image-administrator',300);
             $table->boolean('gender-administrator');
-            $table->boolean('low-administrator');
+            
+            $table->softDeletes();
+            
             $table->timestamps();
         });
     }
