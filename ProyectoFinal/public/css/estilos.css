@@ -80,8 +80,7 @@ padding-left: 10%
 }
 
 .imgcarrusel{
-	margin-left: 25%;
-	height: 50%;
+	max-height: 300px !important;
 	width: 50%;
 }
 
@@ -257,3 +256,18 @@ padding-bottom: 5px;
 .adprod{
 	resize:none;
 }
+
+.caruno{
+	max-height: 300px;
+}
+
+.itit{
+	max-height: 300px;
+}
+
+.carousel-inner > .item > a >img {
+  object-fit: scale-down;
+  height: 300px;
+  width: 100%;
+}
+

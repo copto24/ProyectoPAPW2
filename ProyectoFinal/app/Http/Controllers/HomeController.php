@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\department;
+use App\product;
+
 use Session;
 
 class HomeController extends Controller
@@ -16,8 +18,9 @@ class HomeController extends Controller
     public function index()
     {
         if(Session::has('Usuario')){
+            $productospopulares = product::inRandomOrder()->limit(10)->get();
             $departamentos = department::all(); 
-            return view('PHome.Home')->with('departamentos', $departamentos);
+            return view('PHome.Home')->with('departamentos', $departamentos)->with('productospopulares', $productospopulares);
         }else{
             return redirect('/');
         }

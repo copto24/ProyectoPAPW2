@@ -3,6 +3,7 @@
 
 @php
 	$message=Session::get('message');
+	$cantidad = $productospopulares->count();
 @endphp
 
 @section('content')
@@ -33,23 +34,54 @@
 		        <div class="carrusel sinpadding col-xs-12">
 					      <div id="carousel-example-generic" class="carousel slide carruselhome" data-ride="carousel">
 					        <ol class="carousel-indicators">
-					          <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-					          <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-					          <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+					        	@php
+						        	for ($i=0; $i < $cantidad; $i++) { 
+						        		if ($i == 0) {
+						        @endphp
+						        		<li data-target="#carousel-example-generic" data-slide-to="{{$i}}" class="active"></li>
+						        @php
+						        		}else{
+						        @endphp
+						        		<li data-target="#carousel-example-generic" data-slide-to="{{$i}}"></li>
+						        @php		
+						        		}
+						        	}
+						        @endphp
 					        </ol>
-					        <div class="carousel-inner" role="listbox">
-					          <div class="item active">
-					            <img class="imgcarrusel" src="logo.png" alt="First slide">
-					          </div>
-					    
-					          <div class="item">
-					             <img class="imgcarrusel" src="img2.png" alt="First slide">
-					          </div>
 
-					          <div class="item">
-					            <img class="imgcarrusel" src="img3.png" alt="First slide">
-					          </div>
+					        <div class="carousel-inner caruno" role="listbox">
+					        	@if($productospopulares)
+					        		@php
+					        			$i = 0;
+							        @endphp
+								@foreach($productospopulares as $productopopular)
+						        	@php
+						        		$rutap = "imgproductos/";
+									  	$variablep= $productopopular->{'image-product'};
+									   	$imagenp = $rutap.$variablep;
+							        		if ($i == 0) {
+							        @endphp
+							        		<div class="item active itit">
+							        			<a href="www.google.com">
+								            	<img class="imgcarrusel img-responsive" src="{{$imagenp}}" alt="First slide">
+								            	</a>
+								          	</div>
+							        @php
+							        	$i = 1;
+							        		}else{
+							        @endphp
+							        		<div class="item itit">
+							        			<a href="www.google.com">
+								             	<img class="imgcarrusel img-responsive" src="{{$imagenp}}" alt="First slide">
+								             	</a>
+								          	</div>
+							        @php		
+							        		}
+							        @endphp
+						        @endforeach
+								@endif
 					        </div>
+					        
 					        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
 					          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
 					          <span class="sr-only">Previous</span>
@@ -67,7 +99,7 @@
 			<div class="main row">
 
 				<article class="col-xs-12">
-					<h1> DEPARTAMENTO DE ROPA</h1>
+					<h1> DEPARTAMENTO DE ELECTRONICA</h1>
 					<div class="carrusel sinpadding col-xs-12">
 					      <div id="carouselDep1" class="carousel slide carruselDep" data-ride="carousel">
 					        <ol class="carousel-indicators">
@@ -101,7 +133,7 @@
 				</article>
 
 				<article class="col-xs-12">
-					<h1> DEPARTAMENTO DE ROPA</h1>
+					<h1> DEPARTAMENTO DE PELICULAS</h1>
 					<div class="carrusel sinpadding col-xs-12">
 					      <div id="carouselDep2" class="carousel slide carruselDep" data-ride="carousel">
 					        <ol class="carousel-indicators">
@@ -167,7 +199,205 @@
 				</article>
 
 				<article class="col-xs-12">
-				<h1> DEPARTAMENTO DE ROPA</h1>
+				<h1> DEPARTAMENTO DE DEPORTE</h1>
+					<div class="carrusel sinpadding col-xs-12">
+					      <div id="carouselDep4" class="carousel slide carruselDep" data-ride="carousel">
+					        <ol class="carousel-indicators">
+					          <li data-target="#carouselDep4" data-slide-to="0" class="active"></li>
+					          <li data-target="#carouselDep4" data-slide-to="1"></li>
+					          <li data-target="#carouselDep4" data-slide-to="2"></li>
+					        </ol>
+					        <div class="carousel-inner" role="listbox">
+					          <div class="item active">
+					            <img class="imgcarruselDep" src="logo.png" alt="First slide">
+					          </div>
+					    
+					          <div class="item">
+					             <img class="imgcarruselDep" src="img2.png" alt="First slide">
+					          </div>
+
+					          <div class="item">
+					            <img class="imgcarruselDep" src="img3.png" alt="First slide">
+					          </div>
+					        </div>
+					        <a class="left carousel-control" href="#carouselDep4" role="button" data-slide="prev">
+					          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+					          <span class="sr-only">Previous</span>
+					        </a>
+					        <a class="right carousel-control" href="#carouselDep4" role="button" data-slide="next">
+					          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+					          <span class="sr-only">Next</span>
+					        </a>
+				</div>
+				</article>
+
+				<article class="col-xs-12">
+				<h1> DEPARTAMENTO DE HOGAR</h1>
+					<div class="carrusel sinpadding col-xs-12">
+					      <div id="carouselDep4" class="carousel slide carruselDep" data-ride="carousel">
+					        <ol class="carousel-indicators">
+					          <li data-target="#carouselDep4" data-slide-to="0" class="active"></li>
+					          <li data-target="#carouselDep4" data-slide-to="1"></li>
+					          <li data-target="#carouselDep4" data-slide-to="2"></li>
+					        </ol>
+					        <div class="carousel-inner" role="listbox">
+					          <div class="item active">
+					            <img class="imgcarruselDep" src="logo.png" alt="First slide">
+					          </div>
+					    
+					          <div class="item">
+					             <img class="imgcarruselDep" src="img2.png" alt="First slide">
+					          </div>
+
+					          <div class="item">
+					            <img class="imgcarruselDep" src="img3.png" alt="First slide">
+					          </div>
+					        </div>
+					        <a class="left carousel-control" href="#carouselDep4" role="button" data-slide="prev">
+					          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+					          <span class="sr-only">Previous</span>
+					        </a>
+					        <a class="right carousel-control" href="#carouselDep4" role="button" data-slide="next">
+					          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+					          <span class="sr-only">Next</span>
+					        </a>
+				</div>
+				</article>
+
+				<article class="col-xs-12">
+				<h1> DEPARTAMENTO DE MUSICA</h1>
+					<div class="carrusel sinpadding col-xs-12">
+					      <div id="carouselDep4" class="carousel slide carruselDep" data-ride="carousel">
+					        <ol class="carousel-indicators">
+					          <li data-target="#carouselDep4" data-slide-to="0" class="active"></li>
+					          <li data-target="#carouselDep4" data-slide-to="1"></li>
+					          <li data-target="#carouselDep4" data-slide-to="2"></li>
+					        </ol>
+					        <div class="carousel-inner" role="listbox">
+					          <div class="item active">
+					            <img class="imgcarruselDep" src="logo.png" alt="First slide">
+					          </div>
+					    
+					          <div class="item">
+					             <img class="imgcarruselDep" src="img2.png" alt="First slide">
+					          </div>
+
+					          <div class="item">
+					            <img class="imgcarruselDep" src="img3.png" alt="First slide">
+					          </div>
+					        </div>
+					        <a class="left carousel-control" href="#carouselDep4" role="button" data-slide="prev">
+					          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+					          <span class="sr-only">Previous</span>
+					        </a>
+					        <a class="right carousel-control" href="#carouselDep4" role="button" data-slide="next">
+					          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+					          <span class="sr-only">Next</span>
+					        </a>
+				</div>
+				</article>
+
+				<article class="col-xs-12">
+				<h1> DEPARTAMENTO DE JUGUETES</h1>
+					<div class="carrusel sinpadding col-xs-12">
+					      <div id="carouselDep4" class="carousel slide carruselDep" data-ride="carousel">
+					        <ol class="carousel-indicators">
+					          <li data-target="#carouselDep4" data-slide-to="0" class="active"></li>
+					          <li data-target="#carouselDep4" data-slide-to="1"></li>
+					          <li data-target="#carouselDep4" data-slide-to="2"></li>
+					        </ol>
+					        <div class="carousel-inner" role="listbox">
+					          <div class="item active">
+					            <img class="imgcarruselDep" src="logo.png" alt="First slide">
+					          </div>
+					    
+					          <div class="item">
+					             <img class="imgcarruselDep" src="img2.png" alt="First slide">
+					          </div>
+
+					          <div class="item">
+					            <img class="imgcarruselDep" src="img3.png" alt="First slide">
+					          </div>
+					        </div>
+					        <a class="left carousel-control" href="#carouselDep4" role="button" data-slide="prev">
+					          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+					          <span class="sr-only">Previous</span>
+					        </a>
+					        <a class="right carousel-control" href="#carouselDep4" role="button" data-slide="next">
+					          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+					          <span class="sr-only">Next</span>
+					        </a>
+				</div>
+				</article>
+
+				<article class="col-xs-12">
+				<h1> DEPARTAMENTO DE LIBROS</h1>
+					<div class="carrusel sinpadding col-xs-12">
+					      <div id="carouselDep4" class="carousel slide carruselDep" data-ride="carousel">
+					        <ol class="carousel-indicators">
+					          <li data-target="#carouselDep4" data-slide-to="0" class="active"></li>
+					          <li data-target="#carouselDep4" data-slide-to="1"></li>
+					          <li data-target="#carouselDep4" data-slide-to="2"></li>
+					        </ol>
+					        <div class="carousel-inner" role="listbox">
+					          <div class="item active">
+					            <img class="imgcarruselDep" src="logo.png" alt="First slide">
+					          </div>
+					    
+					          <div class="item">
+					             <img class="imgcarruselDep" src="img2.png" alt="First slide">
+					          </div>
+
+					          <div class="item">
+					            <img class="imgcarruselDep" src="img3.png" alt="First slide">
+					          </div>
+					        </div>
+					        <a class="left carousel-control" href="#carouselDep4" role="button" data-slide="prev">
+					          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+					          <span class="sr-only">Previous</span>
+					        </a>
+					        <a class="right carousel-control" href="#carouselDep4" role="button" data-slide="next">
+					          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+					          <span class="sr-only">Next</span>
+					        </a>
+				</div>
+				</article>
+
+				<article class="col-xs-12">
+				<h1> DEPARTAMENTO DE OFICINA</h1>
+					<div class="carrusel sinpadding col-xs-12">
+					      <div id="carouselDep4" class="carousel slide carruselDep" data-ride="carousel">
+					        <ol class="carousel-indicators">
+					          <li data-target="#carouselDep4" data-slide-to="0" class="active"></li>
+					          <li data-target="#carouselDep4" data-slide-to="1"></li>
+					          <li data-target="#carouselDep4" data-slide-to="2"></li>
+					        </ol>
+					        <div class="carousel-inner" role="listbox">
+					          <div class="item active">
+					            <img class="imgcarruselDep" src="logo.png" alt="First slide">
+					          </div>
+					    
+					          <div class="item">
+					             <img class="imgcarruselDep" src="img2.png" alt="First slide">
+					          </div>
+
+					          <div class="item">
+					            <img class="imgcarruselDep" src="img3.png" alt="First slide">
+					          </div>
+					        </div>
+					        <a class="left carousel-control" href="#carouselDep4" role="button" data-slide="prev">
+					          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+					          <span class="sr-only">Previous</span>
+					        </a>
+					        <a class="right carousel-control" href="#carouselDep4" role="button" data-slide="next">
+					          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+					          <span class="sr-only">Next</span>
+					        </a>
+				</div>
+				</article>
+
+				<article class="col-xs-12">
+				<h1> DEPARTAMENTO DE SALUD</h1>
 					<div class="carrusel sinpadding col-xs-12">
 					      <div id="carouselDep4" class="carousel slide carruselDep" data-ride="carousel">
 					        <ol class="carousel-indicators">
