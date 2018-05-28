@@ -1,5 +1,10 @@
 @extends('PCarrito.MasterCarrito')
 @section('title', 'Carrito')
+
+@php
+	$message=Session::get('message');
+@endphp
+
 @section('content')
 <div class="container-fluid">
 
@@ -19,49 +24,39 @@
 		    <b class="col-lg-2 col-md-2 col-sm-2 col-xs-2 sinpaddingcarrito"> </b>
 		    </center>
 		</div>
+		@if($carritos)
+		@foreach($carritos as $carrito)
+	    	@php
+	    		$idproducto = $carrito->{'id-cart'};
+	    		$rutap = "imgproductos/";
+			  	$variablep= $carrito->{'image-product'};
+			   	$imagenp = $rutap.$variablep;
+			   	$preciopr = $carrito->{'price-product'};
+                $cantpr = $carrito->{'amount-cart'};
+                $subtotal = $preciopr * $cantpr;
+	        @endphp
+			<div class="row">
+				<img class= "img-responsive col-lg-2 col-md-2 col-sm-2 col-xs-2 sinpaddingcarrito" alt="imagen" src="{{$imagenp}}">
+				<h4 class="col-lg-2 col-md-2 col-sm-2 col-xs-2 sinpaddingcarrito centrartextodiv">{{$carrito->{'name-product'} }}</h4>
+			    <h4 class="col-lg-2 col-md-2 col-sm-2 col-xs-2 sinpaddingcarrito centrartextodiv">${{$carrito->{'price-product'} }}</h4>
+			    <h4 class="col-lg-2 col-md-2 col-sm-2 col-xs-2 sinpaddingcarrito centrartextodiv">{{$carrito->{'amount-cart'} }}</h4>
+			    <h4 class="col-lg-2 col-md-2 col-sm-2 col-xs-2 sinpaddingcarrito centrartextodiv">${{$subtotal}}</h4>
+			    <form class="quitarcarrito">
+			    	<input type="hidden" name="idproducto" value="{{$carrito->{'id-cart'} }}">
+			    	 <button type="submit" class="btn btn-success sinpaddingcarrito col-lg-2 col-md-2 col-sm-2 col-xs-2">Quitar
+			    	 	</button>
+			    </form>
+			</div>
+		@endforeach
+		@endif
 
-		<div class="row">
-			<img class= "img-responsive col-lg-2 col-md-2 col-sm-2 col-xs-2 sinpaddingcarrito" alt="imagen" src="ropa.jpg">
-			<h4 class="col-lg-2 col-md-2 col-sm-2 col-xs-2 sinpaddingcarrito centrartextodiv"> Producto1 </h4>
-		    <h4 class="col-lg-2 col-md-2 col-sm-2 col-xs-2 sinpaddingcarrito centrartextodiv"> $50 </h4>
-		    <h4 class="col-lg-2 col-md-2 col-sm-2 col-xs-2 sinpaddingcarrito centrartextodiv"> 1 </h4>
-		    <h4 class="col-lg-2 col-md-2 col-sm-2 col-xs-2 sinpaddingcarrito centrartextodiv"> $50 </h4>
-		    <form class="quitarcarrito">
-		    	<input type="hidden" name="idproducto">
-		    	 <button type="submit" class="btn btn-success sinpaddingcarrito col-lg-2 col-md-2 col-sm-2 col-xs-2">Quitar
-		    	 	</button>
-		    </form>
-		</div>
-
-		<div class="row">
-			<img class= "img-responsive col-lg-2 col-md-2 col-sm-2 col-xs-2 sinpaddingcarrito" alt="imagen" src="ropa.jpg">
-			<h4 class="col-lg-2 col-md-2 col-sm-2 col-xs-2 sinpaddingcarrito centrartextodiv"> Producto1 </h4>
-		    <h4 class="col-lg-2 col-md-2 col-sm-2 col-xs-2 sinpaddingcarrito centrartextodiv"> $50 </h4>
-		    <h4 class="col-lg-2 col-md-2 col-sm-2 col-xs-2 sinpaddingcarrito centrartextodiv"> 1 </h4>
-		    <h4 class="col-lg-2 col-md-2 col-sm-2 col-xs-2 sinpaddingcarrito centrartextodiv"> $50 </h4>
-		    <form class="quitarcarrito">
-		    	<input type="hidden" name="idproducto">
-		    	 <button type="submit" class="btn btn-success sinpaddingcarrito col-lg-2 col-md-2 col-sm-2 col-xs-2">Quitar
-		    	 	</button>
-		    </form>
-		</div>
-
-		<div class="row">
-			<img class= "img-responsive col-lg-2 col-md-2 col-sm-2 col-xs-2 sinpaddingcarrito" alt="imagen" src="ropa.jpg">
-			<h4 class="col-lg-2 col-md-2 col-sm-2 col-xs-2 sinpaddingcarrito centrartextodiv"> Producto1 </h4>
-		    <h4 class="col-lg-2 col-md-2 col-sm-2 col-xs-2 sinpaddingcarrito centrartextodiv"> $50 </h4>
-		    <h4 class="col-lg-2 col-md-2 col-sm-2 col-xs-2 sinpaddingcarrito centrartextodiv"> 1 </h4>
-		    <h4 class="col-lg-2 col-md-2 col-sm-2 col-xs-2 sinpaddingcarrito centrartextodiv"> $50 </h4>
-		    <form class="quitarcarrito">
-		    	<input type="hidden" name="idproducto">
-		    	 <button type="submit" class="btn btn-success sinpaddingcarrito col-lg-2 col-md-2 col-sm-2 col-xs-2">Quitar
-		    	 	</button>
-		    </form>
+		<div>
+			<center> {!!$carritos->render()!!}</center>
 		</div>
 
 		<div class="row">
 			<center>
-				<h2>TOTAL: $150 </h2>
+				<h2>TOTAL: ${{$total}}</h2>
 				<form>
 					<button type="submit" class="btn btn-success">COMPRAR ARTICULOS</button>
 				</form>
@@ -72,8 +67,14 @@
 	
 	<br>
 
-	<footer>
-	   
-	</footer>
+@endsection
 
-	@endsection
+@section('scripts')
+
+		@if($message == '1') 
+	    	<script> alert("No puede votar por su mismo producto."); </script> 
+	    @endif
+
+		<script type="text/javascript">
+		 </script>
+@endsection

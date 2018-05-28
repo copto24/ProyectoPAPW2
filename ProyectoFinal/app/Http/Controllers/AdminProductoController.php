@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Session;
 use App\product;
+use App\cart;
 use App\department;
 use Illuminate\Support\Facades\Storage;
 
@@ -92,8 +93,18 @@ class AdminProductoController extends Controller
     public function eliminar(Request $request)
     {
         $id = $request->id;
+
+        $carrito = cart::where('carts.id-product', $id)->get();
+        for ($i=0; $i < $carrito->count(); $i++) { 
+            $idcart =  $carrito[$i]->{'id-cart'};
+            $carritoex = cart::find($idcart);
+            $carritoex->delete();
+        }
+
         $producto = product::find($id);
         $producto->delete();
+
+
         return redirect('/adminproducto')->with('message','3');
     }
 

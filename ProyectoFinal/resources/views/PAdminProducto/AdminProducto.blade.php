@@ -70,7 +70,7 @@
 										</td>
 										
 										<td>
-										 	<input class="form-control" type="file" id="foto" name="foto" onchange="return fileValidation()">
+										 	<input class="form-control" type="file" id="foto" name="foto" onchange="return fileValidation(this)">
 										</td>
 
 										<td>  
@@ -115,15 +115,23 @@
 	    @endif
 
 	    <script type="text/javascript">
-	    	function fileValidation(){
-			    var fileInput = document.getElementById('foto');
+	    	function fileValidation(datosfoto){
+	    		var filePath = datosfoto.value;
+	    		var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
+			    if(!allowedExtensions.exec(filePath)){
+			        alert('Solo pueden subirse imagenes jpg y png.');
+				      	datosfoto.value = '';
+				        return false;			        
+				}
+			    /*var fileInput = document.getElementById('foto');
 			    var filePath = fileInput.value;
 			    var allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
+			    alert('ho ha');
 			    if(!allowedExtensions.exec(filePath)){
 			        alert('Solo pueden subirse imagenes jpg y png.');
 				      	fileInput.value = '';
 				        return false;			        
-				}
+				}*/
 			}
 
 			function validarSiNumero(numero){

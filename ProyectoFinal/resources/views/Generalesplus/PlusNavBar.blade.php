@@ -49,10 +49,11 @@
 				              <li> <a href="{{ url("/Perfil/{$iduser}") }}">Ver Perfil</a></li>
 				               <li> <a href="/nuevoproducto">Vender</a></li>
 				               <li> <a href="/adminproducto">Administrar</a></li>
+				               <li> <a href="/">Historial</a></li>
 				              </ul>
 				            </li>
 				            <li> <a href="/usuario/logout">Cerrar Sesion</a></li>
-			            	<li> <a href="#contact">Carrito</a></li>
+			            	<li> <a href="/carrito">Carrito</a></li>
 			            	<li> <a href="/ajustes">Ajustes</a></li>
 			           </ul>
 

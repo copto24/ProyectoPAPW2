@@ -5,6 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\department;
 use App\product;
+use App\User;
+use App\comment;
+use App\reason;
+use App\score;
+
 
 use Session;
 
@@ -19,8 +24,33 @@ class HomeController extends Controller
     {
         if(Session::has('Usuario')){
             $productospopulares = product::inRandomOrder()->limit(10)->get();
+
+            $productoselectronicos = product::inRandomOrder()->join('departments', 'products.id-department','departments.id-department')->where('departments.name-department', 'Electronicos')->limit(5)->get();
+            $productospeliculas = product::inRandomOrder()->join('departments', 'products.id-department','departments.id-department')->where('departments.name-department', 'Peliculas')->limit(5)->get();
+            $productosropas = product::inRandomOrder()->join('departments', 'products.id-department','departments.id-department')->where('departments.name-department', 'Ropa')->limit(5)->get();
+            $productosdeportes = product::inRandomOrder()->join('departments', 'products.id-department','departments.id-department')->where('departments.name-department', 'Deporte')->limit(5)->get();
+            $productoshogares = product::inRandomOrder()->join('departments', 'products.id-department','departments.id-department')->where('departments.name-department', 'Hogar')->limit(5)->get();
+            $productosmusicas = product::inRandomOrder()->join('departments', 'products.id-department','departments.id-department')->where('departments.name-department', 'Musica')->limit(5)->get();
+            $productosjuguetes = product::inRandomOrder()->join('departments', 'products.id-department','departments.id-department')->where('departments.name-department', 'Juguetes')->limit(5)->get();
+            $productoslibros = product::inRandomOrder()->join('departments', 'products.id-department','departments.id-department')->where('departments.name-department', 'Libros')->limit(5)->get();
+            $productosoficinas = product::inRandomOrder()->join('departments', 'products.id-department','departments.id-department')->where('departments.name-department', 'Oficina')->limit(5)->get();
+            $productossalud = product::inRandomOrder()->join('departments', 'products.id-department','departments.id-department')->where('departments.name-department', 'Salud')->limit(5)->get();
+
             $departamentos = department::all(); 
-            return view('PHome.Home')->with('departamentos', $departamentos)->with('productospopulares', $productospopulares);
+            return view('PHome.Home')->with([
+                                        'departamentos' => $departamentos,
+                                        'productospopulares' => $productospopulares,
+                                        'productoselectronicos' => $productoselectronicos,
+                                        'productospeliculas' => $productospeliculas,
+                                        'productosropas' => $productosropas,
+                                        'productosdeportes' => $productosdeportes,
+                                        'productoshogares' => $productoshogares,
+                                        'productosmusicas' => $productosmusicas,
+                                        'productosjuguetes' => $productosjuguetes,
+                                        'productoslibros' => $productoslibros,
+                                        'productosoficinas' => $productosoficinas,
+                                        'productossalud' => $productossalud
+                                    ]);
         }else{
             return redirect('/');
         }

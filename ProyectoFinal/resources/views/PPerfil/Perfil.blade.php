@@ -75,6 +75,7 @@
 				@if($productos)
 					@foreach($productos as $producto)
 						@php
+							$idproducto = $producto->{'id-product'};
 							$nombreproducto = $producto->{'name-product'};
 							$precio = $producto->{'price-product'};
 							$rutap = "../imgproductos/";
@@ -82,8 +83,8 @@
 						   	$imagenp = $rutap.$variablep;
 						@endphp
 						<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-						 	<a href="Producto.php" target="_self"> <img class= "img-responsive miniaturaproducto " alt="Miniatura" src="{{$imagenp}}"> </a> 
-							   <br> <center> {{$nombreproducto}} <br> {{$precio}}</center>							
+						 	<a href="{{ url("/Producto/{$idproducto}/1") }}" target="_self"> <img class= "img-responsive miniaturaproducto " alt="Miniatura" src="{{$imagenp}}"> </a> 
+							   <br> <center> {{$nombreproducto}} <br> ${{$precio}}</center>							
 						</div>
 					@endforeach
 				@endif

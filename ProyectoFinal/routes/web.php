@@ -24,7 +24,16 @@ Route::delete('adminproducto/eliminar', 'AdminProductoController@eliminar');
 
 Route::get('Perfil/{id}','PerfilController@verperfil');
 
+Route::get('Producto/{id}/{orden}','CompraController@verproducto');
+Route::post('Producto/calificar','CompraController@calificar');
+Route::post('Producto/reportar','CompraController@reportar');
+Route::post('Producto/comentar','CompraController@comentar');
+Route::get('Producto/ordenar','CompraController@ordenar');
+Route::get('Producto/comprar','CompraController@comprar');
+
 Route::resource('adminproducto', 'AdminProductoController');
+
+Route::resource('carrito', 'CarritoController');
 
 Route::resource('ajustes', 'AjustesController');
 
