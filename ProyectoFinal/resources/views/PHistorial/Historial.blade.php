@@ -1,5 +1,19 @@
 @extends('PHistorial.MasterHistorial')
 @section('title', 'Historial')
+
+@php
+	$message=Session::get('message');
+	if (isset($_GET["page"])){
+		$contador = 0;
+		$pagina = $_GET["page"];
+		for ($i=1; $i < $pagina; $i++) { 
+			$contador = $contador + 10;
+		}
+	}else{
+		$contador = 0;
+	}
+@endphp
+
 @section('contenido')
 <div class="container">
 
@@ -21,68 +35,42 @@
 							    </tr>
 							 
 							  <tbody>
-
+							  	@if($histos)
+							  	@foreach($histos as $histo)
+							  	 	@php		
+							        		$contador = $contador + 1;
+							        		$cantidadhisto = $histo->{'amount-purchase'};
+							        		$preciohisto =	$histo->{'price-purchase'};
+							        		$totalhisto = $cantidadhisto * $preciohisto;
+							        @endphp
 							    <tr>
-							      <th scope="row">1</th>
+							      <th scope="row">{{$contador}}</th>
 							      <form class="form=group">
-								      <td> <input class="form-control" type="text" readonly="true" name="" value="Producto"> </td>
-								      <td> <input class="form-control" type="text" readonly="true" name="" value="Cantidad"> </td>
-								      <td> <input class="form-control" type="text" readonly="true" name="" value="Total"> </td>
+								      <td> <input class="form-control" type="text" readonly="true" name="" value="{{$histo->{'name-product'} }}"> </td>
+								      <td> <input class="form-control" type="text" readonly="true" name="" value="{{$histo->{'amount-purchase'} }}"> </td>
+								      <td> <input class="form-control" type="text" readonly="true" name="" value="${{$totalhisto}}"> </td>
 							       </form>
 							    </tr>
-
-							    <tr>
-							      <th scope="row">1</th>
-							      <form class="form=group">
-								      <td> <input class="form-control" type="text" readonly="true" name="" value="Producto"> </td>
-								      <td> <input class="form-control" type="text" readonly="true" name="" value="Cantidad"> </td>
-								      <td> <input class="form-control" type="text" readonly="true" name="" value="Total"> </td>
-							       </form>
-							    </tr>
-
-							   <tr>
-							      <th scope="row">1</th>
-							      <form class="form=group">
-								      <td> <input class="form-control" type="text" readonly="true" name="" value="Producto"> </td>
-								      <td> <input class="form-control" type="text" readonly="true" name="" value="Cantidad"> </td>
-								      <td> <input class="form-control" type="text" readonly="true" name="" value="Total"> </td>
-							       </form>
-							    </tr>
-
-							    <tr>
-							      <th scope="row">1</th>
-							      <form class="form=group">
-								      <td> <input class="form-control" type="text" readonly="true" name="" value="Producto"> </td>
-								      <td> <input class="form-control" type="text" readonly="true" name="" value="Cantidad"> </td>
-								      <td> <input class="form-control" type="text" readonly="true" name="" value="Total"> </td>
-							       </form>
-							    </tr>
-
-							   <tr>
-							      <th scope="row">1</th>
-							      <form class="form=group">
-								      <td> <input class="form-control" type="text" readonly="true" name="" value="Producto"> </td>
-								      <td> <input class="form-control" type="text" readonly="true" name="" value="Cantidad"> </td>
-								      <td> <input class="form-control" type="text" readonly="true" name="" value="Total"> </td>
-							       </form>
-							    </tr>
-
-							     <tr>
-							      <th scope="row">1</th>
-							      <form class="form=group">
-								      <td> <input class="form-control" type="text" readonly="true" name="" value="Producto"> </td>
-								      <td> <input class="form-control" type="text" readonly="true" name="" value="Cantidad"> </td>
-								      <td> <input class="form-control" type="text" readonly="true" name="" value="Total"> </td>
-							       </form>
-							    </tr>
+							    @endforeach
+								@endif
 
 							  </tbody>
 							</table>
 		        </article>     
 		</div>
+		<div>
+			<center> {!!$histos->render()!!}</center>
+		</div>
 	</div>
 
-	 <footer class="">
-	 	
-	 </footer>
+@endsection
+
+@section('scripts')
+
+		@if($message == '1') 
+	    	<script> alert("Productos comprados."); </script> 
+	    @endif
+
+		<script type="text/javascript">
+		 </script>
 @endsection

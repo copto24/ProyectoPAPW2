@@ -7,6 +7,7 @@ use App\department;
 use App\product;
 use App\User;
 use App\comment;
+use App\purchase;
 use App\report;
 use App\reason;
 use App\score;
@@ -28,7 +29,7 @@ class CarritoController extends Controller
             $total = 0;
             $carritos = cart::join('products', 'carts.id-product','products.id-product')
                                 ->where('carts.id-user', $iduser)
-                                ->paginate(2);
+                                ->paginate(5);
 
             $carrtotal = cart::join('products', 'carts.id-product','products.id-product')
                                 ->where('carts.id-user', $iduser)
@@ -67,6 +68,53 @@ class CarritoController extends Controller
     public function store(Request $request)
     {
         //
+    }
+
+    public function eliminar(Request $request)
+    {
+        $idcarrito = $request->idproducto;
+        $prodcar = cart::find($idcarrito);
+        $cantidadstock = $prodcar->{'amount-cart'};
+        $idproducto = $prodcar->{'id-product'};
+        $prodcar->delete();
+
+
+        $producto = product::find($idproducto);
+        $cantidadproducto = $producto->{'amount-product'};
+        $nuevacantidad =  $cantidadstock + $cantidadproducto;
+        $producto->{'amount-product'} = $nuevacantidad;
+        $producto->save();
+        return redirect('/carrito')->with('message','1');
+
+    }
+
+    public function comprar(Request $request)
+    {
+        $idusuario = $request->idusuario;
+        $carrito = cart::where('carts.id-user', $idusuario)->get();
+        if($carrito->count() != 0){
+            for ($i=0; $i < $carrito->count(); $i++) { 
+            $idcarpro = $carrito[$i]->{'id-product'};
+            $idcarrito = $carrito[$i]->{'id-cart'};
+            $producto = product::find($idcarpro);
+
+
+            $compra = new purchase;
+            $compra->{'amount-purchase'} = $carrito[$i]->{'amount-cart'};
+            $compra->{'price-purchase'} = $producto->{'price-product'};
+            $compra->{'id-user'} = $idusuario;
+            $compra->{'id-product'} = $idcarpro;
+            $compra->save();
+
+            $prodcar = cart::find($idcarrito);
+            $prodcar->delete();
+        }
+        return redirect('/historial')->with('message','1');
+
+        }else{
+            return redirect('/carrito')->with('message','2');
+        }
+
     }
 
     /**

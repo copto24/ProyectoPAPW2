@@ -93,6 +93,9 @@
 							</table>
 		        </article>     
 		</div>
+		<div>
+			<center> {!!$productos->render()!!}</center>
+		</div>
 	</div>
 @endsection
 

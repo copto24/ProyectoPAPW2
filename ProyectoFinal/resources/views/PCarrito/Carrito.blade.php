@@ -3,6 +3,7 @@
 
 @php
 	$message=Session::get('message');
+	$idusuario = Session::get('Usuario')->{'id-user'};
 @endphp
 
 @section('content')
@@ -41,7 +42,9 @@
 			    <h4 class="col-lg-2 col-md-2 col-sm-2 col-xs-2 sinpaddingcarrito centrartextodiv">${{$carrito->{'price-product'} }}</h4>
 			    <h4 class="col-lg-2 col-md-2 col-sm-2 col-xs-2 sinpaddingcarrito centrartextodiv">{{$carrito->{'amount-cart'} }}</h4>
 			    <h4 class="col-lg-2 col-md-2 col-sm-2 col-xs-2 sinpaddingcarrito centrartextodiv">${{$subtotal}}</h4>
-			    <form class="quitarcarrito">
+		    	<form action="carrito/eliminar" method="POST" class="quitarcarrito">
+			      	{{ csrf_field() }}
+			      	<input name="_method" type="hidden" value="DELETE">
 			    	<input type="hidden" name="idproducto" value="{{$carrito->{'id-cart'} }}">
 			    	 <button type="submit" class="btn btn-success sinpaddingcarrito col-lg-2 col-md-2 col-sm-2 col-xs-2">Quitar
 			    	 	</button>
@@ -57,7 +60,9 @@
 		<div class="row">
 			<center>
 				<h2>TOTAL: ${{$total}}</h2>
-				<form>
+				<form action="carrito/comprar" method="POST">
+			      	{{ csrf_field() }}
+			      	<input type="hidden" name="idusuario" value="{{$idusuario}}">
 					<button type="submit" class="btn btn-success">COMPRAR ARTICULOS</button>
 				</form>
 			</center>
@@ -72,7 +77,9 @@
 @section('scripts')
 
 		@if($message == '1') 
-	    	<script> alert("No puede votar por su mismo producto."); </script> 
+	    	<script> alert("Producto eliminado del carrito."); </script> 
+	    @elseif($message == '2') 
+	    	<script> alert("No hay nada que comprar."); </script>
 	    @endif
 
 		<script type="text/javascript">

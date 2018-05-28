@@ -31,6 +31,12 @@ Route::post('Producto/comentar','CompraController@comentar');
 Route::get('Producto/ordenar','CompraController@ordenar');
 Route::get('Producto/comprar','CompraController@comprar');
 
+Route::delete('carrito/eliminar','CarritoController@eliminar');
+Route::post('carrito/comprar','CarritoController@comprar');
+
+
+Route::resource('historial', 'HistorialController');
+
 Route::resource('adminproducto', 'AdminProductoController');
 
 Route::resource('carrito', 'CarritoController');

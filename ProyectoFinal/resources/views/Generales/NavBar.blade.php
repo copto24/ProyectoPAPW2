@@ -48,7 +48,7 @@
 				              <li> <a href="{{ url("/Perfil/{$iduser}") }}">Ver Perfil</a></li>
 				               <li> <a href="/nuevoproducto">Vender</a></li>
 				               <li> <a href="/adminproducto">Administrar</a></li>
-				               <li> <a href="/">Historial</a></li>
+				               <li> <a href="/historial">Historial</a></li>
 				              </ul>
 				            </li>
 				            <li> <a href="/usuario/logout">Cerrar Sesion</a></li>

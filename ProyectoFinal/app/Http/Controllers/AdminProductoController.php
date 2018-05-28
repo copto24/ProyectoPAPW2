@@ -21,7 +21,7 @@ class AdminProductoController extends Controller
         if(Session::has('Usuario')){
             $departamentos = department::all(); 
             $idusuario = Session::get('Usuario')->{'id-user'};
-            $productos = product::where('id-user', $idusuario)->get();
+            $productos = product::where('id-user', $idusuario)->paginate(10);
             return view('PAdminProducto.AdminProducto')->with('departamentos', $departamentos)->with('productos', $productos);
         }else{
             return redirect('/');
