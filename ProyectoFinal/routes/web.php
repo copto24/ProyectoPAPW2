@@ -35,6 +35,15 @@ Route::delete('carrito/eliminar','CarritoController@eliminar');
 Route::post('carrito/comprar','CarritoController@comprar');
 
 
+Route::get('adminadmin/reportes','AdministradorController@reportes');
+Route::get('adminadmin/bloqueos','AdministradorController@bloqueos');
+Route::any('adminadmin/logout', 'AdministradorController@logout');
+Route::put('adminadmin/bloquear','AdministradorController@bloquear');
+Route::delete('adminadmin/desbloquear','AdministradorController@desbloquear');
+
+
+Route::resource('adminadmin', 'AdministradorController');
+
 Route::resource('historial', 'HistorialController');
 
 Route::resource('adminproducto', 'AdminProductoController');

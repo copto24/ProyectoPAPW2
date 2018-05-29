@@ -158,10 +158,10 @@ class CompraController extends Controller
         $idproducto = $request->id;
         $reporteusuario = user::join('reports', 'users.id-user','reports.id-user')
                     ->join('products', 'reports.id-product','products.id-product')
+                    ->whereNull('reports.deleted_at')
                     ->where('reports.id-user', $iduser )
                     ->where('reports.id-product', $idproducto)
                     ->get();   
-
         $usuarioproducto = user::join('products', 'users.id-user','products.id-user')
                                 ->where('products.id-user', $iduser)
                                 ->where('products.id-product', $idproducto)

@@ -32,7 +32,7 @@ class HistorialController extends Controller
                             ->paginate(10); 
             return view('PHistorial.Historial')->with('histos', $histos);
         }else{
-            return redirect('/principal');
+            return redirect('/');
         }
     }
 

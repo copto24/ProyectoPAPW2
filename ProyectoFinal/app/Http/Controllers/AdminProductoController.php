@@ -7,6 +7,7 @@ use Session;
 use App\product;
 use App\cart;
 use App\department;
+use App\report;
 use Illuminate\Support\Facades\Storage;
 
 class AdminProductoController extends Controller
@@ -94,12 +95,21 @@ class AdminProductoController extends Controller
     {
         $id = $request->id;
 
+        $reportes = report::where('reports.id-product', $id)->get();
+        for ($i=0; $i < $reportes->count(); $i++) { 
+            $idreporte =  $reportes[$i]->{'id-report'};
+            $reportex = report::find($idreporte);
+            $reportex->delete();
+        }
+
+
         $carrito = cart::where('carts.id-product', $id)->get();
         for ($i=0; $i < $carrito->count(); $i++) { 
             $idcart =  $carrito[$i]->{'id-cart'};
             $carritoex = cart::find($idcart);
             $carritoex->delete();
         }
+
 
         $producto = product::find($id);
         $producto->delete();

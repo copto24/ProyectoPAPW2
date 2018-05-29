@@ -17,6 +17,10 @@ class LandingController extends Controller
     {
         if(Session::has('Usuario')){
             return redirect('/principal');
+
+        }else if(Session::has('Administrador')){
+            return redirect('/adminadmin/reportes');
+
         }else{
             $paises = country::all(); 
             return view('PLanding.Landing')->with('paises', $paises);

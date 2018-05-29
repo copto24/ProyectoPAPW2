@@ -7,20 +7,25 @@
 			            <span class="icon-bar linea"></span>
 			            <span class="icon-bar linea"></span>
 			          </button>
-			           <img class="logo2 navbar-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="false" src="logo.png">
+			           <img class="logo2 navbar-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="false" src="../logo.png">
 			        </div>
+
+			        @php
+			           $ruta = "../fad/";
+		               $variable= Session::get('Administrador')->{'image-administrator'};
+		               $imagen = $ruta.$variable;
+	               @endphp
 
 			        <div id="navbar" class="navbar-collapse collapse">
 			          <ul class="nav navbar-nav">
-			          		<li> <img class="logohome" src="logo.png"> </li>
-				            <li class="active"><a href="#">Inicio</a></li>
-				            <li class="active"><a href="#">Bloqueos</a></li>
+			          		<li> <img class="logohome" src="../logo.png"> </li>
+				            <li class="active"><a href="/adminadmin/reportes">Inicio</a></li>
+				            <li class="active"><a href="/adminadmin/bloqueos">Bloqueos</a></li>
 			          </ul>
 
 			           <ul class="nav navbar-nav navbar-right">
-							<li> <img class="imgperfil img-circle" src="usuario.png"> </li>
-				            <li> <a href="#contact">Cerrar Sesion</a></li>
-			            	<li> <a href="#contact">Ajustes</a></li>
+							<li> <img class="imgperfil img-circle" src="{{$imagen}}"> </li>
+				            <li> <a href="/adminadmin/logout">Cerrar Sesion</a></li>
 			           </ul>
 
 			        </div>

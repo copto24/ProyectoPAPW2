@@ -141,6 +141,10 @@
 	    	<script> alert("Usuario Agregado Correctamente."); </script> 
 	    @elseif($message == '2') 
 	    	<script> alert("Datos incorrectos."); </script>
+    	@elseif($message == '3') 
+	    	<script> alert("El correo ya existe."); </script>
+    	@elseif($message == '4') 
+	    	<script> alert("Ha sido bloqueado, contacte con un administrador."); </script>
 	    @endif
 
 	    <script type="text/javascript">

@@ -45,7 +45,7 @@
 							        @endphp
 							    <tr>
 							      <th scope="row">{{$contador}}</th>
-							      <form class="form=group">
+							      <form action="carrito/comprar" method="POST">
 								      <td> <input class="form-control" type="text" readonly="true" name="" value="{{$histo->{'name-product'} }}"> </td>
 								      <td> <input class="form-control" type="text" readonly="true" name="" value="{{$histo->{'amount-purchase'} }}"> </td>
 								      <td> <input class="form-control" type="text" readonly="true" name="" value="${{$totalhisto}}"> </td>

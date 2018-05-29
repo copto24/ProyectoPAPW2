@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\administrator;
+use App\bloqued;
 use Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -63,45 +65,78 @@ class UserController extends Controller
         $nombreimagen = $file->getClientOriginalName();
         Storage::disk('local')->put($nombreimagen,  \File::get($file));
         
+        $buscar = administrator::where('email-administrator', $request->correo)->get();
 
-        $usuario = new User;
-        $usuario->{'first-name-user'} = $request->nombre;
-        $usuario->{'last-name-user'} = $request->apellido;
-        $usuario->{'email-user'} = $request->correo;
-        $usuario->{'password-user'} = bcrypt($request->contra);
-        $usuario->{'image-user'} = $nombreimagen;
-        $usuario->{'birthdate-user'} = $request->fecha;
-        $usuario->{'gender-user'} = $request->optradio;
-        $usuario->{'id-country'} = $request->pais;
+        if($buscar->count() == 0){
+            $usuario = new User;
+            $usuario->{'first-name-user'} = $request->nombre;
+            $usuario->{'last-name-user'} = $request->apellido;
+            $usuario->{'email-user'} = $request->correo;
+            $usuario->{'password-user'} = bcrypt($request->contra);
+            $usuario->{'image-user'} = $nombreimagen;
+            $usuario->{'birthdate-user'} = $request->fecha;
+            $usuario->{'gender-user'} = $request->optradio;
+            $usuario->{'id-country'} = $request->pais;
 
-        $usuario->save();
-        return redirect('/')->with('message','1');
+            $usuario->save();
+            return redirect('/')->with('message','1');
+        }else{
+            return redirect('/')->with('message','3');
+        }
     }
 
 
     public function login(Request $request){
 
         $Usuarios = user::all(); 
+        $Adminstradores = administrator::all(); 
         $idusuario = 0;
-        $notificacion = 0;
+        $notificacionus = 0;
+        $notificacionadmin = 0;
 
-        foreach ($Usuarios as $user)
+        foreach ($Adminstradores as $administrator)
         {
-            if (Hash::check($request->contra, $user->{'password-user'}) && $request->correo == $user->{'email-user'}) {
-                $idusuario = $user->{'id-user'};
-                $notificacion = 0;
+            if (Hash::check($request->contra, $administrator->{'password-administrator'}) && $request->correo == $administrator->{'email-administrator'}) {
+                $idadmin = $administrator->{'id-administrator'};
+                $notificacionadmin = 0;
                 break;
             }else{
-                $notificacion = 1;
+                $notificacionadmin = 1;
             }
         }
 
-        if($notificacion == 1){
-            return redirect('/')->with('message','2');
+
+        if($notificacionadmin == 0){
+            $adminvalidado = administrator::find($idadmin);
+            $request->session()->put('Administrador', $adminvalidado);
+            return redirect('/adminadmin/reportes');
         }else{
-            $Usuariovalidado = User::find($idusuario);
-            $request->session()->put('Usuario', $Usuariovalidado);
-            return redirect('/principal');
+            foreach ($Usuarios as $user)
+            {
+                if (Hash::check($request->contra, $user->{'password-user'}) && $request->correo == $user->{'email-user'}) {
+                    $idusuario = $user->{'id-user'};
+                    $notificacionus = 0;
+                    break;
+                }else{
+                    $notificacionus = 1;
+                }
+            }
+             if($notificacionus == 1){
+            return redirect('/')->with('message','2');
+            }else{
+                $Validarbloqueo = bloqued::join('users', 'bloqueds.id-user','users.id-user')
+                                            ->where('users.email-user', $request->correo)
+                                            ->get();
+                if($Validarbloqueo->count()==0){
+                    $Usuariovalidado = User::find($idusuario);
+                    $request->session()->put('Usuario', $Usuariovalidado);
+                    return redirect('/principal');
+                }else{
+                    return redirect('/')->with('message','4');
+                }
+
+            }
+
         }
 
         /*if($usuario != NULL){
@@ -168,66 +203,70 @@ class UserController extends Controller
        $this->validate($request, $rules, $messages);
 
        $longitud = strlen($request->contra);
+        $buscar = administrator::where('email-administrator', $request->correo)->get();
+        
+        if($buscar->count() == 0){
+               if($longitud >= 3 || $longitud == 0){
+                    $longitud = strlen($request->correo);
+                    $notificacion = 0;
 
-       if($longitud >= 3 || $longitud == 0){
-            $longitud = strlen($request->correo);
-            $notificacion = 0;
-
-            if($longitud != 0){
-                $Usuarios = user::all(); 
-                $correosesion = Session::get('Usuario')->{'email-user'};
-                foreach ($Usuarios as $user){
-                if ($request->correo == $user->{'email-user'} && $correosesion != $user->{'email-user'}){
-                        $notificacion = 1;
-                        break;
+                    if($longitud != 0){
+                        $Usuarios = user::all(); 
+                        $correosesion = Session::get('Usuario')->{'email-user'};
+                        foreach ($Usuarios as $user){
+                        if ($request->correo == $user->{'email-user'} && $correosesion != $user->{'email-user'}){
+                                $notificacion = 1;
+                                break;
+                            }else{
+                                $notificacion = 0;
+                            }
+                        }
                     }else{
-                        $notificacion = 0;
+                        $notificacion == 0;
                     }
-                }
-            }else{
-                $notificacion == 0;
-            }
 
-            if($notificacion == 0){
-                $id = Session::get('Usuario')->{'id-user'};
-                $usuario = User::find($id);
-                if($request->nombre != NULL){
-                    $usuario->{'first-name-user'} = $request->nombre;
-                }
-                if($request->apellido != NULL){
-                    $usuario->{'last-name-user'} = $request->apellido;
-                }
-                $usuario->{'birthdate-user'} = $request->fecha;
-                $usuario->{'id-country'} = $request->pais;
-                if($request->correo != NULL){
-                    $usuario->{'email-user'} = $request->correo;
-                }
-                if($request->contra != NULL){
-                    $usuario->{'password-user'} = bcrypt($request->contra);
-                }
-                $usuario->{'gender-user'} = $request->optradio;
-                $file = $request->file('foto');
-                if($file != NULL){
-                    $path = Session::get('Usuario')->{'image-user'};
-                    Storage::disk('local')->delete($path);
+                    if($notificacion == 0){
+                        $id = Session::get('Usuario')->{'id-user'};
+                        $usuario = User::find($id);
+                        if($request->nombre != NULL){
+                            $usuario->{'first-name-user'} = $request->nombre;
+                        }
+                        if($request->apellido != NULL){
+                            $usuario->{'last-name-user'} = $request->apellido;
+                        }
+                        $usuario->{'birthdate-user'} = $request->fecha;
+                        $usuario->{'id-country'} = $request->pais;
+                        if($request->correo != NULL){
+                            $usuario->{'email-user'} = $request->correo;
+                        }
+                        if($request->contra != NULL){
+                            $usuario->{'password-user'} = bcrypt($request->contra);
+                        }
+                        $usuario->{'gender-user'} = $request->optradio;
+                        $file = $request->file('foto');
+                        if($file != NULL){
+                            $path = Session::get('Usuario')->{'image-user'};
+                            Storage::disk('local')->delete($path);
 
-                    $nombreimagen = $file->getClientOriginalName();
-                    Storage::disk('local')->put($nombreimagen,  \File::get($file));
-                    $usuario->{'image-user'} = $nombreimagen;
-                }
-                $usuario->save();
-                $request->session()->forget('Usuario');
-                $request->session()->put('Usuario', $usuario);
-                return redirect('/principal')->with('message','1');
+                            $nombreimagen = $file->getClientOriginalName();
+                            Storage::disk('local')->put($nombreimagen,  \File::get($file));
+                            $usuario->{'image-user'} = $nombreimagen;
+                        }
+                        $usuario->save();
+                        $request->session()->forget('Usuario');
+                        $request->session()->put('Usuario', $usuario);
+                        return redirect('/principal')->with('message','1');
 
-            }else{
-                return redirect('/ajustes')->with('message','2');
-            }
+                    }else{
+                        return redirect('/ajustes')->with('message','2');
+                    }
 
-       }else{
-            return redirect('/ajustes')->with('message','1');
-       }
-
+               }else{
+                    return redirect('/ajustes')->with('message','1');
+               }
+        }else{
+            return redirect('/ajustes')->with('message','2');
+        }
 
         /*$usuario->{'first-name-user'} = $request->nombre;
         $usuario->save();

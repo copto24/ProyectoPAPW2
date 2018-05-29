@@ -53,6 +53,11 @@ return [
             'root' => public_path('imgproductos'),
         ],
 
+        'fad' => [
+            'driver' => 'local',
+            'root' => public_path('fad'),
+        ],
+
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
