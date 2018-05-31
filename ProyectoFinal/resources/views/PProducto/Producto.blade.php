@@ -20,9 +20,11 @@
  <div class="container-fluid">
 
 			    <div class="form-row">
-				    <form class="centrarBusqueda">
+			        	<form class="centrarBusqueda" action="/buscar/texto" method="GET" onsubmit="return validarbusqueda(this)">
+			        		{{ csrf_field() }}
 					    <div class="form-group sinpadding col-xs-2">
-					    	<select class="form-control">
+					    	<select class="form-control" id="depa" name="depa">
+					    	<option value="0">Todos los departamentos</option>
 							  @if($departamentos)
 								  		@foreach($departamentos as $departamento)
 								  			{<option value={{$departamento->{'id-department'} }}> {{$departamento->{'name-department'} }} </option>}
@@ -32,15 +34,15 @@
 					    </div>
 
 				    	<div class="form-group sinpadding col-xs-7">
-				    		<input class="form-control" type="text" placeholder="Buscar">
+				    		<input class="form-control" type="text" name="tex" id="tex" placeholder="Buscar">
 				    	</div>
 
 				    	<div class="form-group sinpadding col-xs-1">
-				    		<button type="button" class="btn btn-success">Aceptar</button>
+				    		<button type="submit" class="btn btn-success">Buscar</button>
 				    	</div>
 			    	</form>
 			    </div>
-			 </div>
+			     </div>
 
 
 		<div class="container">
@@ -61,6 +63,10 @@
 							   	</h2>
 							   	<br>
 							   <h2>FECHA DE LANZAMIENTO: {{$fecha}}</h2> <br>
+							   <h2>DESCRIPCION:</h2>
+							   <div class="descrip">{{$productouno->{'description-product'} }}</div> 
+							   </h2>
+							   <br>
 							   <h2>CALIFICACIÓN: {{$calificacion}}
 							   	@php
 					    			for ($i=0; $i < $calificacion; $i++) { 
@@ -71,15 +77,23 @@
 								@endphp
 								</h2>
 								<br>
-							   <h2>AGREGAR AL CARRITO</h2> <br>
+						</div>
+				</article>
 
-								<form action="/Producto/comprar" method="GET" accept-charset="UTF-8">
+				<div class="row">
+						<div class="col-lg-4 col-md-4 col-sm-4">
+							<h2>AGREGAR AL CARRITO</h2>
+								<form action="/Producto/comprar" method="GET" accept-charset="UTF-8" onsubmit="return validarCompra(this)">
 			        			{{ csrf_field() }}
 			        			<input type="hidden" name="id" value="{{$productouno->{'id-product'} }}">
 			        			<input type="hidden" name="orden" value="{{$orden}}">
-								    <div class="form-group sinpadding col-lg-2 col-md-2 col-sm-2 col-xs-2">
-								    	<select class="form-control" required name="cantidad">
+								    	<select class="form-control reportaje" required id="cantidad" name="cantidad">
 								    		@php
+								    			if($productouno->{'amount-product'} == 0){
+								    		@endphp
+								    			{<option value=0>0</option>}
+								    		@php
+								    			}else{
 								    			for ($i=0; $i <$productouno->{'amount-product'} ; $i++) { 
 								    		@endphp
 									  			{<option value={{$i+1 }}>
@@ -87,20 +101,14 @@
 									  			 </option>}
 											@php
 								    			}
+								    		}
 								    		@endphp
 										</select>
-								    </div>
-
-							    	<div class="form-group sinpadding col-lg-1 col-md-1 col-sm-1 col-xs-1">
 							    		<button type="submit" class="btn btn-success">Agregar</button>
-							    	</div>
 						    	</form>
-						    	<br>	
 						</div>
-				</article>
 
-				<div class="row">
-						<div class="col-lg-6 col-md-6 col-sm-4">
+						<div class="col-lg-4 col-md-4 col-sm-4">
 							<h2>Reportar Producto</h2> 
 							<form action="/Producto/reportar" method="POST" accept-charset="UTF-8">
 		        			{{ csrf_field() }}
@@ -117,7 +125,7 @@
 							</form>
 						</div>
 
-						<div class="col-lg-6 col-md-6 col-sm-4">
+						<div class="col-lg-4 col-md-4 col-sm-4">
 							<h2>Calificar</h2>
 							<form action="/Producto/calificar" method="POST" accept-charset="UTF-8">
 		        			{{ csrf_field() }}
@@ -296,6 +304,18 @@
 	    @endif
 
 		<script type="text/javascript">
+			function validarbusqueda(dato){
+
+				var nombretexto = dato['tex'].value;
+				if(nombretexto == null || /^\s+$/.test(nombretexto)){
+					alert('Empieza por letra o numero');
+					return false;
+				}else {
+					return true;
+				}
+
+			}
+			
 	   		 function validacion(){
 				var comentartext = document.getElementById(comentar.id).value;
 				
@@ -305,6 +325,22 @@
 				}else {
 					return true;
 				}
+
+			}
+			function validarCompra(datos){
+				var cantcant = datos['cantidad'].value;
+				if(cantcant==0){
+					alert('No hay productos en el stock');
+					return false;
+				}else{
+					return true;
+				}
+
+			}
+			function navbarfunction(){
+
+			alert('Creadores de Winkel.\nMuñoz Copto Carlos Fernando - Frontend.\nChacón Briones César Alejandro - Backend.');
+			return false;
 
 			}
 		 </script>

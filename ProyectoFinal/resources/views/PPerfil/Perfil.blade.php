@@ -23,11 +23,14 @@
 @endphp
 
 @section('content')
-<div class="container-fluid">
-			    <div class="form-row">
-				    <form class="centrarBusqueda">
+ <div class="container-fluid">
+
+			   <div class="form-row">
+			        	<form class="centrarBusqueda" action="/buscar/texto" method="GET" onsubmit="return validarbusqueda(this)">
+			        		{{ csrf_field() }}
 					    <div class="form-group sinpadding col-xs-2">
-					    	<select class="form-control">
+					    	<select class="form-control" id="depa" name="depa">
+					    	<option value="0">Todos los departamentos</option>
 							  @if($departamentos)
 								  		@foreach($departamentos as $departamento)
 								  			{<option value={{$departamento->{'id-department'} }}> {{$departamento->{'name-department'} }} </option>}
@@ -37,11 +40,11 @@
 					    </div>
 
 				    	<div class="form-group sinpadding col-xs-7">
-				    		<input class="form-control" type="text" placeholder="Buscar">
+				    		<input class="form-control" type="text" name="tex" id="tex" placeholder="Buscar">
 				    	</div>
 
 				    	<div class="form-group sinpadding col-xs-1">
-				    		<button type="button" class="btn btn-success">Aceptar</button>
+				    		<button type="submit" class="btn btn-success">Buscar</button>
 				    	</div>
 			    	</form>
 			    </div>
@@ -98,3 +101,46 @@
 
 
 	@endsection
+
+
+@section('scripts')
+	    @if(count($errors) > 0)
+			<script>
+				alert("ERRORES.\n"+
+				@foreach($errors->all() as $error)
+				"{{$error}}\n"+
+				@endforeach"");
+			</script>
+		@endif
+
+	   	@if($message == '1') 
+	    	<script> alert("Usuario Agregado Correctamente."); </script> 
+	    @elseif($message == '2') 
+	    	<script> alert("Datos incorrectos."); </script>
+    	@elseif($message == '3') 
+	    	<script> alert("El correo ya existe."); </script>
+    	@elseif($message == '4') 
+	    	<script> alert("Ha sido bloqueado, contacte con un administrador."); </script>
+	    @endif
+
+<script type="text/javascript">
+			function validarbusqueda(dato){
+
+				var nombretexto = dato['tex'].value;
+				if(nombretexto == null || /^\s+$/.test(nombretexto)){
+					alert('Empieza por letra o numero');
+					return false;
+				}else {
+					return true;
+				}
+
+			}
+			function navbarfunction(){
+
+			alert('Creadores de Winkel.\nMuñoz Copto Carlos Fernando - Frontend.\nChacón Briones César Alejandro - Backend.');
+			return false;
+
+			}
+	    </script>
+		
+@endsection

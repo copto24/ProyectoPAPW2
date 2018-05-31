@@ -8,29 +8,32 @@
 			            <span class="icon-bar linea"></span>
 			            <span class="icon-bar linea"></span>
 			          </button>
-			           <img class="logo2 navbar-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="false" src="logo.png">
+			           <img class="logo2 navbar-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="false" src="/logo.png">
 			        </div>
 
 			        <div id="navbar" class="navbar-collapse collapse">
 			          <ul class="nav navbar-nav">
-			          		<li> <img class="logohome" src="logo.png"> </li>
+			          		<li> <img class="logohome" src="/logo.png"> </li>
 				            <li class="active"><a href="/principal">Inicio</a></li>
-				            <li><a href="#about">Acerca de</a></li>
-				            <li><a href="#contact">Contacto</a></li>
+				            <li><a onclick="navbarfunction()">Acerca de</a></li>
 				            <li class="dropdown">
 				              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Departamentos <span class="caret"></span></a>
 				              <ul class="dropdown-menu">
-				                <li><a href="#">Electronica</a></li>
-				                <li><a href="#">Juegos</a></li>
-				                <li><a href="#">Peliculas</a></li>
-				                <li><a href="#">Ropa</a></li>
-				                <li><a href="#">Calzado</a></li>
+				              	 @if($departamentos)
+					              	 @foreach($departamentos as $departamento)
+						              	 @php
+						              	 	$iddepa = $departamento->{'id-department'};
+						              	 @endphp
+						                	<li><a href="{{ url("/buscar/{$iddepa}") }}">{{$departamento->{'name-department'} }}</a></li>
+					                @endforeach
+				                 @endif
 				              </ul>
 				            </li>
 			          </ul>
 
 			           @php
-			           $ruta = "fotografias/";
+
+			           $ruta = "/fotografias/";
 		               $variable= Session::get('Usuario')->{'image-user'};
 		               $iduser = Session::get('Usuario')->{'id-user'};
 		               $imagen = $ruta.$variable;
@@ -60,3 +63,4 @@
 
 			      </div>
 			    </nav>
+

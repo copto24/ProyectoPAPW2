@@ -20,11 +20,14 @@
 				            <li class="dropdown">
 				              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Departamentos <span class="caret"></span></a>
 				              <ul class="dropdown-menu">
-				                <li><a href="#">Electronica</a></li>
-				                <li><a href="#">Juegos</a></li>
-				                <li><a href="#">Peliculas</a></li>
-				                <li><a href="#">Ropa</a></li>
-				                <li><a href="#">Calzado</a></li>
+				                @if($departamentos)
+					              	 @foreach($departamentos as $departamento)
+						              	 @php
+						              	 	$iddepa = $departamento->{'id-department'};
+						              	 @endphp
+						                	<li><a href="{{ url("/buscar/{$iddepa}") }}">{{$departamento->{'name-department'} }}</a></li>
+					                @endforeach
+				                 @endif
 				              </ul>
 				            </li>
 			          </ul>

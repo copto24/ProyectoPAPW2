@@ -7,7 +7,7 @@
 			            <span class="icon-bar linea"></span>
 			            <span class="icon-bar linea"></span>
 			          </button>
-			           <img class="logo2 navbar-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="false" src="../logo.png">
+			           <img class="logo2 navbar-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="false" src="/logo.png">
 			        </div>
 
 			        @php
@@ -18,7 +18,7 @@
 
 			        <div id="navbar" class="navbar-collapse collapse">
 			          <ul class="nav navbar-nav">
-			          		<li> <img class="logohome" src="../logo.png"> </li>
+			          		<li> <img class="logohome" src="/logo.png"> </li>
 				            <li class="active"><a href="/adminadmin/reportes">Inicio</a></li>
 				            <li class="active"><a href="/adminadmin/bloqueos">Bloqueos</a></li>
 			          </ul>

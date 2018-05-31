@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use App\department;
 use App\product;
+use App\bloqued;
 use Session;
 use Illuminate\Http\Request;
 
@@ -44,11 +45,16 @@ class PerfilController extends Controller
     public function verperfil($id)
     {
         if(Session::has('Usuario')){
-           $usuario = User::join('countries', 'users.id-country','countries.id-country')->where('users.id-user', $id)->get();
+            $usuariobloqueado = bloqued::join('users', 'bloqueds.id-user','users.id-user')->where('users.id-user', $id)->get();
+            if ($usuariobloqueado->count()==0) {
+                 $usuario = User::join('countries', 'users.id-country','countries.id-country')->where('users.id-user', $id)->get();
            //dd($usuario);
-           $productos = product::where('id-user', $id)->paginate(4);
-           $departamentos = department::all(); 
-            return view('PPerfil.Perfil')->with('usuario', $usuario)->with('productos', $productos)->with('departamentos', $departamentos);
+                 $productos = product::where('id-user', $id)->paginate(4);
+                 $departamentos = department::all(); 
+                return view('PPerfil.Perfil')->with('usuario', $usuario)->with('productos', $productos)->with('departamentos', $departamentos);
+            }else{
+                return redirect('/principal')->with('message','2');
+            }
         }else{
             return redirect('/');
         }

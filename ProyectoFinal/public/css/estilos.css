@@ -306,7 +306,15 @@ padding-bottom: 5px;
 
 .reportaje{
 	    display: inline;
-    width: 75%;
+    width: 60%;
+}
+
+.filtrosT{
+	display: inline;
+}
+
+.filtros{
+	display: inline;
 }
 
 .comboordenar{
@@ -320,4 +328,8 @@ padding-bottom: 5px;
 
 .divcarrusel{
 	padding: 0px;
+}
+
+.descrip{
+	overflow: hidden;
 }

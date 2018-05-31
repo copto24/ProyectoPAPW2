@@ -72,5 +72,11 @@
 	    @endif
 
 		<script type="text/javascript">
+			function navbarfunction(){
+
+			alert('Creadores de Winkel.\nMuñoz Copto Carlos Fernando - Frontend.\nChacón Briones César Alejandro - Backend.');
+			return false;
+
+			}
 		 </script>
 @endsection

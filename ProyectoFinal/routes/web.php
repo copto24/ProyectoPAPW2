@@ -41,6 +41,12 @@ Route::any('adminadmin/logout', 'AdministradorController@logout');
 Route::put('adminadmin/bloquear','AdministradorController@bloquear');
 Route::delete('adminadmin/desbloquear','AdministradorController@desbloquear');
 
+Route::get('buscar/texto','BusquedaController@buscarproductos');
+Route::get('buscar/filtros','BusquedaController@buscarfiltros');
+Route::get('buscar/{id}','BusquedaController@busquedadepartamento');
+
+
+Route::resource('buscar','BusquedaController');
 
 Route::resource('adminadmin', 'AdministradorController');
 

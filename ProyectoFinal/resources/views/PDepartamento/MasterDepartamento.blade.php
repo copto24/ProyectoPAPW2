@@ -12,8 +12,10 @@
 
 		@yield('content')
 	  
-	    @include('Generales.GeneralScripts')
+	   @include('Generales.GeneralScripts')
 
 	</body>
+
+	@yield('scripts')
 
 </html>

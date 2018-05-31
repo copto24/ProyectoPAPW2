@@ -3,7 +3,7 @@
 
 	<head>
 		<title>@yield('title')</title>
-		@include('Generalesplus.PlusHeadC')
+		@include('Generales.HeadC')
 	</head>
 
 	<body class="fondo">
@@ -12,7 +12,7 @@
 
 		@yield('content')
 	  
-	    @include('Generalesplus.PlusScripts')
+	    @include('Generales.GeneralScripts')
 
 	</body>
 

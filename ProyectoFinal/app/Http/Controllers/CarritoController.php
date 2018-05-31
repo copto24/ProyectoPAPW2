@@ -40,9 +40,11 @@ class CarritoController extends Controller
                 $subtotal = $preciopr * $cantpr;
                 $total = $total + $subtotal;
             }               
+            $departamentos = department::all(); 
             return view('PCarrito.Carrito')->with([
                                         'carritos' => $carritos,
-                                        'total' => $total
+                                        'total' => $total,
+                                        'departamentos' => $departamentos
                                     ]);
         }else{
             return redirect('/');

@@ -30,7 +30,11 @@ class HistorialController extends Controller
                             ->where('purchases.id-user', $idusuario)
                             ->orderBy('purchases.created_at', 'desc')
                             ->paginate(10); 
-            return view('PHistorial.Historial')->with('histos', $histos);
+            $departamentos = department::all(); 
+            return view('PHistorial.Historial')->with([
+                                        'histos' => $histos,
+                                        'departamentos' => $departamentos
+                                    ]);
         }else{
             return redirect('/');
         }

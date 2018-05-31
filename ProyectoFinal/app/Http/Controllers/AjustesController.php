@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\country;
+use App\department;
 use Session;
 
 class AjustesController extends Controller
@@ -17,7 +18,11 @@ class AjustesController extends Controller
     {
         if(Session::has('Usuario')){
             $paises = country::all(); 
-            return view('PAjustes.Ajustes')->with('paises', $paises);
+            $departamentos = department::all(); 
+            return view('PAjustes.Ajustes')->with([
+                                        'paises' => $paises,
+                                        'departamentos' => $departamentos
+                                    ]);
         }else{
             return redirect('/');
         }
